@@ -1,3 +1,16 @@
+/* color scheme */
+:root {
+  --pink: #F1DDDF;
+  --light-green: #86B049;
+  --dark-green: #476930;
+  --brown: #c8b99b;
+}
+
+/* used in signin */
+.pink-bg {
+  background-color: var(--brown);
+}
+
 html,
 body {
   --bs-light-rgb: 236, 236, 236;

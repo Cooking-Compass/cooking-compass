@@ -1,7 +1,9 @@
 'use client';
 
 import { signIn } from 'next-auth/react';
+import React from 'react';
 import { Button, Card, Col, Container, Form, Row } from 'react-bootstrap';
+import '../../globals.css';
 
 /** The sign in page. */
 const SignIn = () => {
@@ -25,9 +27,9 @@ const SignIn = () => {
   };
 
   return (
-    <main>
+    <main className="pink-bg">
       <Container>
-        <Row className="justify-content-center">
+        <Row className="justify-content-center" height="500px">
           <Col xs={5}>
             <h1 className="text-center">Sign In</h1>
             <Card>
@@ -38,9 +40,11 @@ const SignIn = () => {
                     <input name="email" type="text" className="form-control" />
                   </Form.Group>
                   <Form.Group>
+                    <br />
                     <Form.Label>Password</Form.Label>
                     <input name="password" type="password" className="form-control" />
                   </Form.Group>
+                  <br />
                   <Button type="submit" className="mt-3">
                     Signin
                   </Button>
