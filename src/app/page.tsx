@@ -1,9 +1,9 @@
-import LandingPageMiddleImage from '@/components/LandingPageMiddleImage';
+import LandingPageMiddleContents from '@/components/LandingPageMiddleContents';
 
 /** The Home page. */
 const Home = () => (
   <main>
-    <LandingPageMiddleImage />
+    <LandingPageMiddleContents />
   </main>
 );
 
