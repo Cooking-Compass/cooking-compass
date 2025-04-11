@@ -7,6 +7,8 @@ const LandingPageMiddleContents = () => (
       <Row id="middlerow" className="align-middle text-center align-items-center">
         <Col xs={4}>
           <EggFill size={150} />
+          <br />
+          <br />
           <h2>
             <strong>
               Tasty Food
@@ -18,6 +20,8 @@ const LandingPageMiddleContents = () => (
         </Col>
         <Col xs={4}>
           <PeopleFill size={150} />
+          <br />
+          <br />
           <h2>
             <strong>
               Recipes
@@ -29,6 +33,8 @@ const LandingPageMiddleContents = () => (
         </Col>
         <Col xs={4}>
           <ChatDotsFill size={150} />
+          <br />
+          <br />
           <h2>
             <strong>
               Community
