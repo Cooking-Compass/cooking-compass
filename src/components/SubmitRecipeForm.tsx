@@ -13,7 +13,7 @@ interface RecipeFormData {
 }
 
 const SubmitRecipeForm: React.FC = () => {
-  const { register, handleSubmit, formState: { errors } } = useForm<RecipeFormData>();
+  const { register, handleSubmit, reset, formState: { errors } } = useForm<RecipeFormData>();
 
   const onSubmit: SubmitHandler<RecipeFormData> = async (data) => {
     try {
@@ -21,6 +21,10 @@ const SubmitRecipeForm: React.FC = () => {
     } catch (error) {
       console.error('Error submitting recipe:', error);
     }
+  };
+
+  const onreset = () => {
+    reset();
   };
 
   return (
@@ -91,7 +95,7 @@ const SubmitRecipeForm: React.FC = () => {
                   />
                   <div className="invalid-feedback">{errors.description?.message}</div>
                 </Form.Group>
-                <input type="hidden" {...register('owner')} value={currentUser} />
+                <input type="hidden" {...register('owner')} value="defaultUser" />
                 <Form.Group className="form-group">
                   <Row className="pt-3">
                     <Col>
@@ -100,7 +104,7 @@ const SubmitRecipeForm: React.FC = () => {
                       </Button>
                     </Col>
                     <Col>
-                      <Button type="button" onClick={() => onReset()} variant="warning" className="float-right">
+                      <Button type="button" onClick={() => onreset()} variant="warning" className="float-right">
                         Reset
                       </Button>
                     </Col>
