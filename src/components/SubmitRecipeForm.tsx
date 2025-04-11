@@ -1,5 +1,6 @@
 'use client';
 
+import React from 'react';
 import { Button, Card, Col, Container, Form, Row } from 'react-bootstrap';
 import { SubmitHandler, useForm } from 'react-hook-form';
 
@@ -13,18 +14,37 @@ interface RecipeFormData {
 }
 
 const SubmitRecipeForm: React.FC = () => {
-  const { register, handleSubmit, reset, formState: { errors } } = useForm<RecipeFormData>();
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm<RecipeFormData>({
+    defaultValues: {
+      name: '',
+      ingredients: '',
+      instructions: '',
+      image: '',
+      description: '',
+      owner: 'defaultUser',
+    },
+  });
 
   const onSubmit: SubmitHandler<RecipeFormData> = async (data) => {
     try {
-      console.log(data);
+      console.log('Form submitted:', data);
+      // eslint-disable-next-line no-alert
+      alert('Recipe submitted successfully!');
+      reset(); // Reset the form after successful submission
     } catch (error) {
       console.error('Error submitting recipe:', error);
+      // eslint-disable-next-line no-alert
+      alert('Failed to submit the recipe. Please try again.');
     }
   };
 
-  const onreset = () => {
-    reset();
+  const onReset = () => {
+    reset(); // Reset the form to its initial state
   };
 
   return (
@@ -37,65 +57,78 @@ const SubmitRecipeForm: React.FC = () => {
           <Card>
             <Card.Body>
               <Form onSubmit={handleSubmit(onSubmit)}>
+                {/* Recipe Title */}
                 <Row>
                   <Col>
                     <Form.Group>
                       <Form.Label>Recipe Title</Form.Label>
                       <input
                         type="text"
-                        {...register('name')}
+                        {...register('name', { required: 'Recipe title is required' })}
                         className={`form-control ${errors.name ? 'is-invalid' : ''}`}
                       />
                       <div className="invalid-feedback">{errors.name?.message}</div>
                     </Form.Group>
                   </Col>
                 </Row>
-                <Row>
-                  <Col>
-                    <Form.Group>
-                      <Form.Label>Ingredients</Form.Label>
-                      <textarea
-                        {...register('ingredients')}
-                        className={`form-control ${errors.ingredients ? 'is-invalid' : ''}`}
-                      />
-                      <div className="invalid-feedback">{errors.ingredients?.message}</div>
-                    </Form.Group>
-                  </Col>
-                </Row>
-                <Row>
-                  <Col>
-                    <Form.Group>
-                      <Form.Label>Instructions</Form.Label>
-                      <textarea
-                        {...register('instructions')}
-                        className={`form-control ${errors.instructions ? 'is-invalid' : ''}`}
-                      />
-                      <div className="invalid-feedback">{errors.instructions?.message}</div>
-                    </Form.Group>
-                  </Col>
-                </Row>
+
+                {/* Image */}
                 <Row>
                   <Col>
                     <Form.Group>
                       <Form.Label>Image</Form.Label>
-                      <input
-                        type="text"
-                        {...register('image')}
+                      <textarea
+                        {...register('image', { required: 'Image is required' })}
                         className={`form-control ${errors.image ? 'is-invalid' : ''}`}
                       />
                       <div className="invalid-feedback">{errors.image?.message}</div>
                     </Form.Group>
                   </Col>
                 </Row>
+
+                {/* Description */}
+                <Row>
+                  <Col>
+                    <Form.Group>
+                      <Form.Label>Description</Form.Label>
+                      <textarea
+                        {...register('description', { required: 'Description is required' })}
+                        className={`form-control ${errors.description ? 'is-invalid' : ''}`}
+                      />
+                      <div className="invalid-feedback">{errors.description?.message}</div>
+                    </Form.Group>
+                  </Col>
+                </Row>
+
+                {/* Ingredients */}
+                <Row>
+                  <Col>
+                    <Form.Group>
+                      <Form.Label>Ingredients</Form.Label>
+                      <input
+                        type="text"
+                        {...register('ingredients', { required: 'Ingredients are required' })}
+                        className={`form-control ${errors.ingredients ? 'is-invalid' : ''}`}
+                      />
+                      <div className="invalid-feedback">{errors.ingredients?.message}</div>
+                    </Form.Group>
+                  </Col>
+                </Row>
+
+                {/* Instructions */}
                 <Form.Group>
-                  <Form.Label>Description</Form.Label>
+                  <Form.Label>Instructions</Form.Label>
                   <textarea
-                    {...register('description')}
-                    className={`form-control ${errors.description ? 'is-invalid' : ''}`}
+                    {...register('instructions', { required: 'Instructions are required' })}
+                    className={`form-control ${errors.instructions ? 'is-invalid' : ''}`}
                   />
-                  <div className="invalid-feedback">{errors.description?.message}</div>
+                  <div className="invalid-feedback">{errors.instructions?.message}</div>
                 </Form.Group>
+
+                {/* Hidden Owner Field */}
                 <input type="hidden" {...register('owner')} value="defaultUser" />
+
+                {/* Submit and Reset Buttons */}
                 <Form.Group className="form-group">
                   <Row className="pt-3">
                     <Col>
@@ -104,7 +137,7 @@ const SubmitRecipeForm: React.FC = () => {
                       </Button>
                     </Col>
                     <Col>
-                      <Button type="button" onClick={() => onreset()} variant="warning" className="float-right">
+                      <Button type="button" onClick={onReset} variant="warning" className="float-right">
                         Reset
                       </Button>
                     </Col>
