@@ -6,9 +6,9 @@
   --brown: #c8b99b;
 }
 
-/* used in signin */
-.pink-bg {
-  background-color: var(--brown);
+.signin {
+  background-color: var(--pink);
+  flex: 1;
 }
 
 html,

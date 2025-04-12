@@ -27,10 +27,11 @@ const SignIn = () => {
   };
 
   return (
-    <main className="pink-bg">
+    <main className="signin">
       <Container>
         <Row className="justify-content-center" height="500px">
           <Col xs={5}>
+            <br />
             <h1 className="text-center">Sign In</h1>
             <Card>
               <Card.Body>
@@ -52,7 +53,8 @@ const SignIn = () => {
               </Card.Body>
               <Card.Footer>
                 Don&apos;t have an account?
-                <a href="/auth/signup">Sign up</a>
+                {' '}
+                <a href="/auth/signup">Sign up!</a>
               </Card.Footer>
             </Card>
           </Col>
