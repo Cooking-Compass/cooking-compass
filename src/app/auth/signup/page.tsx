@@ -46,7 +46,7 @@ const SignUp = () => {
       <Container className="flex-grow-1">
         <Row className="justify-content-center">
           <Col xs={12} md={6} lg={5}>
-            <h1 className="text-center">Sign Up</h1>
+            <h1 className="text-center mt-4">Sign Up</h1>
             <Card>
               <Card.Body>
                 <Form onSubmit={handleSubmit(onSubmit)}>
