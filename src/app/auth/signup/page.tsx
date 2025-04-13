@@ -14,7 +14,7 @@ type SignUpForm = {
   confirmPassword: string;
 };
 
-/** The sign up page. */
+/** The sign-up page. */
 const SignUp = () => {
   const validationSchema = Yup.object().shape({
     email: Yup.string().required('Email is required').email('Email is invalid'),
@@ -37,17 +37,15 @@ const SignUp = () => {
   });
 
   const onSubmit = async (data: SignUpForm) => {
-    // console.log(JSON.stringify(data, null, 2));
     await createUser(data);
-    // After creating, signIn with redirect to the add page
     await signIn('credentials', { callbackUrl: '/add', ...data });
   };
 
   return (
-    <main>
-      <Container>
+    <main className="wrapper">
+      <Container className="flex-grow-1">
         <Row className="justify-content-center">
-          <Col xs={5}>
+          <Col xs={12} md={6} lg={5}>
             <h1 className="text-center">Sign Up</h1>
             <Card>
               <Card.Body>
@@ -83,12 +81,16 @@ const SignUp = () => {
                   <Form.Group className="form-group py-3">
                     <Row>
                       <Col>
-                        <Button type="submit" className="btn btn-primary">
+                        <Button type="submit" className="btn btn-primary w-100">
                           Register
                         </Button>
                       </Col>
                       <Col>
-                        <Button type="button" onClick={() => reset()} className="btn btn-warning float-right">
+                        <Button
+                          type="button"
+                          onClick={() => reset()}
+                          className="btn btn-warning w-100"
+                        >
                           Reset
                         </Button>
                       </Col>
@@ -96,14 +98,19 @@ const SignUp = () => {
                   </Form.Group>
                 </Form>
               </Card.Body>
-              <Card.Footer>
-                Already have an account?
-                <a href="/auth/signin">Sign in</a>
-              </Card.Footer>
             </Card>
           </Col>
         </Row>
       </Container>
+      <footer className="footer">
+        <p>
+          Already have an account?
+          {' '}
+          <a href="/auth/signin" className="text-primary">
+            Sign in
+          </a>
+        </p>
+      </footer>
     </main>
   );
 };
