@@ -42,7 +42,7 @@ const SignUp = () => {
   };
 
   return (
-    <main className="wrapper">
+    <main className="d-flex flex-column min-vh-100">
       <Container className="flex-grow-1">
         <Row className="justify-content-center">
           <Col xs={12} md={6} lg={5}>
@@ -98,19 +98,15 @@ const SignUp = () => {
                   </Form.Group>
                 </Form>
               </Card.Body>
+              <Card.Footer>
+                Already have an account?
+                <a href="/auth/signin">Sign in</a>
+                <footer className="footer bg-light text-center py-3 mt-4" />
+              </Card.Footer>
             </Card>
           </Col>
         </Row>
       </Container>
-      <footer className="footer">
-        <p>
-          Already have an account?
-          {' '}
-          <a href="/auth/signin" className="text-primary">
-            Sign in
-          </a>
-        </p>
-      </footer>
     </main>
   );
 };
