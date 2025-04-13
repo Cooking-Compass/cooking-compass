@@ -47,3 +47,7 @@ body {
   height: 60vh
 }
 
+#submitform {
+  min-height: 90vh;
+}
+

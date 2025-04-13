@@ -47,7 +47,7 @@ const SignIn = () => {
                   </Form.Group>
                   <br />
                   <Button type="submit" className="mt-3">
-                    Signin
+                    Sign in
                   </Button>
                 </Form>
               </Card.Body>
