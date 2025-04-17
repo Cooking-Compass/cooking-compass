@@ -6,15 +6,15 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
 import { Card, Col, Container, Button, Form, Row } from 'react-bootstrap';
 import { createUser } from '@/lib/dbActions';
+import '../../globals.css';
 
 type SignUpForm = {
   email: string;
   password: string;
   confirmPassword: string;
-  // acceptTerms: boolean;
 };
 
-/** The sign up page. */
+/** The sign-up page. */
 const SignUp = () => {
   const validationSchema = Yup.object().shape({
     email: Yup.string().required('Email is required').email('Email is invalid'),
@@ -37,18 +37,16 @@ const SignUp = () => {
   });
 
   const onSubmit = async (data: SignUpForm) => {
-    // console.log(JSON.stringify(data, null, 2));
     await createUser(data);
-    // After creating, signIn with redirect to the add page
     await signIn('credentials', { callbackUrl: '/add', ...data });
   };
 
   return (
-    <main>
-      <Container>
+    <main className="d-flex flex-column min-vh-100">
+      <Container className="flex-grow-1">
         <Row className="justify-content-center">
-          <Col xs={5}>
-            <h1 className="text-center">Sign Up</h1>
+          <Col xs={12} md={6} lg={5}>
+            <h1 className="text-center mt-4">Sign Up</h1>
             <Card>
               <Card.Body>
                 <Form onSubmit={handleSubmit(onSubmit)}>
@@ -83,12 +81,16 @@ const SignUp = () => {
                   <Form.Group className="form-group py-3">
                     <Row>
                       <Col>
-                        <Button type="submit" className="btn btn-primary">
+                        <Button type="submit" className="btn btn-primary w-100">
                           Register
                         </Button>
                       </Col>
                       <Col>
-                        <Button type="button" onClick={() => reset()} className="btn btn-warning float-right">
+                        <Button
+                          type="button"
+                          onClick={() => reset()}
+                          className="btn btn-warning w-100"
+                        >
                           Reset
                         </Button>
                       </Col>
@@ -99,6 +101,7 @@ const SignUp = () => {
               <Card.Footer>
                 Already have an account?
                 <a href="/auth/signin">Sign in</a>
+                <footer className="footer bg-light text-center py-3 mt-4" />
               </Card.Footer>
             </Card>
           </Col>

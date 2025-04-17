@@ -1,9 +1,9 @@
-import SubmitRecipeForm from '@/components/SubmitRecipeForm';
+import LandingPageMiddleContents from '@/components/LandingPageMiddleContents';
 
-const AddRecipePage = () => (
+const Page = () => (
   <main>
-    <SubmitRecipeForm />
+    <LandingPageMiddleContents />
   </main>
 );
 
-export default AddRecipePage;
+export default Page;
