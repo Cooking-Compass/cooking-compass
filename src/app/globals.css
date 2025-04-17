@@ -77,3 +77,15 @@ body {
   min-height: 90vh;
 }
 
+#aboutpage {
+  min-height: 100vh;
+  background-color: var(--pink);
+}
+
+#aboutrow {
+  min-height: 300px;
+}
+
+#titletext {
+  font-size: 70px;
+}
