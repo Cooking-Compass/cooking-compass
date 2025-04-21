@@ -32,19 +32,24 @@ const SubmitRecipeForm: React.FC = () => {
 
   const onSubmit: SubmitHandler<RecipeFormData> = async (data) => {
     try {
-      console.log('Form submitted:', data);
-      // eslint-disable-next-line no-alert
+      const response = await fetch('/api/recipes', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to submit recipe');
+      }
+
+      const result = await response.json();
+      console.log('Recipe submitted successfully:', result);
       alert('Recipe submitted successfully!');
       reset(); // Reset the form after successful submission
     } catch (error) {
       console.error('Error submitting recipe:', error);
-      // eslint-disable-next-line no-alert
       alert('Failed to submit the recipe. Please try again.');
     }
-  };
-
-  const onReset = () => {
-    reset(); // Reset the form to its initial state
   };
 
   return (
@@ -137,7 +142,7 @@ const SubmitRecipeForm: React.FC = () => {
                       </Button>
                     </Col>
                     <Col>
-                      <Button type="button" onClick={onReset} variant="warning" className="float-right">
+                      <Button type="button" onClick={() => reset()} variant="warning" className="float-right">
                         Reset
                       </Button>
                     </Col>
