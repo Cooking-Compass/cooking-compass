@@ -1,6 +1,6 @@
 'use server';
 
-import { Stuff, Condition } from '@prisma/client';
+import { Stuff, Condition, Reason } from '@prisma/client';
 import { hash } from 'bcrypt';
 import { redirect } from 'next/navigation';
 import { prisma } from './prisma';
@@ -28,6 +28,26 @@ export async function addStuff(stuff: { name: string; quantity: number; owner: s
     },
   });
   // After adding, redirect to the list page
+  redirect('/list');
+}
+
+// eslint-disable-next-line max-len
+export async function addReport(data: { owner: string; yourname: string; criminal: string; description: string; reason: string }) {
+  let reason: Reason = 'Innapropriate';
+  if (data.reason === 'Expensive') {
+    reason = 'Expensive';
+  } else if (data.reason === 'Disgusting') {
+    reason = 'Disgusting';
+  }
+  await prisma.userReport.create({
+    data: {
+      owner: data.owner,
+      yourname: data.yourname,
+      criminal: data.criminal,
+      description: data.description,
+      reason,
+    },
+  });
   redirect('/list');
 }
 

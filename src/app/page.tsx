@@ -1,9 +1,9 @@
 import LandingPageMiddleContents from '@/components/LandingPageMiddleContents';
 
-const AddRecipePage = () => (
+const Page = () => (
   <main>
     <LandingPageMiddleContents />
   </main>
 );
 
-export default AddRecipePage;
+export default Page;
