@@ -6,6 +6,8 @@ const prisma = new PrismaClient();
 export default async function handler(req: Request) {
   try {
     const data = await req.json();
+
+    // write the recipe data to the database
     const newRecipe = await prisma.recipe.create({
       data: {
         name: data.name,
@@ -17,6 +19,7 @@ export default async function handler(req: Request) {
       },
     });
 
+    // return a success response
     return NextResponse.json({ success: true, recipe: newRecipe });
   } catch (error) {
     console.error('Error creating recipe:', error);

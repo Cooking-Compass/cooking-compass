@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import { Button, Card, Col, Container, Form, Row } from 'react-bootstrap';
 import { SubmitHandler, useForm } from 'react-hook-form';
 
@@ -14,6 +14,9 @@ interface RecipeFormData {
 }
 
 const SubmitRecipeForm: React.FC = () => {
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  const [successMessage, setSuccessMessage] = useState<string | null>(null);
+
   const {
     register,
     handleSubmit,
@@ -26,7 +29,7 @@ const SubmitRecipeForm: React.FC = () => {
       instructions: '',
       image: '',
       description: '',
-      owner: 'defaultUser',
+      owner: 'defaultUser', // replace with actual user data (if necessary)
     },
   });
 
@@ -44,11 +47,13 @@ const SubmitRecipeForm: React.FC = () => {
 
       const result = await response.json();
       console.log('Recipe submitted successfully:', result);
-      alert('Recipe submitted successfully!');
-      reset(); // Reset the form after successful submission
+      setSuccessMessage('Recipe submitted successfully!');
+      setErrorMessage(null); // clear any previous error messages
+      reset(); // reset the form after successful submission
     } catch (error) {
       console.error('Error submitting recipe:', error);
-      alert('Failed to submit the recipe. Please try again.');
+      setErrorMessage('Failed to submit the recipe. Please try again. ');
+      setSuccessMessage(null); // clear any previous success messages
     }
   };
 
@@ -59,6 +64,16 @@ const SubmitRecipeForm: React.FC = () => {
           <Col className="text-center">
             <h2>Submit Your Recipe</h2>
           </Col>
+          {errorMessage && (
+            <div className="alert alert-danger" role="alert">
+              {errorMessage}
+            </div>
+          )}
+          {successMessage && (
+            <div className="alert alert-success" role="alert">
+              {successMessage}
+            </div>
+          )}
           <Card>
             <Card.Body>
               <Form onSubmit={handleSubmit(onSubmit)}>
@@ -81,9 +96,10 @@ const SubmitRecipeForm: React.FC = () => {
                 <Row>
                   <Col>
                     <Form.Group>
-                      <Form.Label>Image</Form.Label>
-                      <textarea
-                        {...register('image', { required: 'Image is required' })}
+                      <Form.Label>Image URL</Form.Label>
+                      <input
+                        type="text"
+                        {...register('image', { required: 'Image URL is required' })}
                         className={`form-control ${errors.image ? 'is-invalid' : ''}`}
                       />
                       <div className="invalid-feedback">{errors.image?.message}</div>
@@ -110,8 +126,7 @@ const SubmitRecipeForm: React.FC = () => {
                   <Col>
                     <Form.Group>
                       <Form.Label>Ingredients</Form.Label>
-                      <input
-                        type="text"
+                      <textarea
                         {...register('ingredients', { required: 'Ingredients are required' })}
                         className={`form-control ${errors.ingredients ? 'is-invalid' : ''}`}
                       />
@@ -121,14 +136,18 @@ const SubmitRecipeForm: React.FC = () => {
                 </Row>
 
                 {/* Instructions */}
-                <Form.Group>
-                  <Form.Label>Instructions</Form.Label>
-                  <textarea
-                    {...register('instructions', { required: 'Instructions are required' })}
-                    className={`form-control ${errors.instructions ? 'is-invalid' : ''}`}
-                  />
-                  <div className="invalid-feedback">{errors.instructions?.message}</div>
-                </Form.Group>
+                <Row>
+                  <Col>
+                    <Form.Group>
+                      <Form.Label>Instructions</Form.Label>
+                      <textarea
+                        {...register('instructions', { required: 'Instructions are required' })}
+                        className={`form-control ${errors.instructions ? 'is-invalid' : ''}`}
+                      />
+                      <div className="invalid-feedback">{errors.instructions?.message}</div>
+                    </Form.Group>
+                  </Col>
+                </Row>
 
                 {/* Hidden Owner Field */}
                 <input type="hidden" {...register('owner')} value="defaultUser" />
