@@ -44,7 +44,7 @@ const NavBar: React.FC = () => {
             )}
           </Nav>
           <Nav>
-          <Navbar.Brand href="/about" className="px-5">About</Navbar.Brand>
+          <Navbar.Brand href="/about" className="px-5 py-2">About</Navbar.Brand>
             {session ? (
               <NavDropdown id="login-dropdown" title={currentUser}>
                 <NavDropdown.Item id="login-dropdown-sign-out" href="/api/auth/signout">

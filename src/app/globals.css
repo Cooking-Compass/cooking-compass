@@ -86,7 +86,8 @@ body {
 
 #aboutpage, #reportpage {
   min-height: 100vh;
-  background-color: var(--pink);
+  background: url('../../public/green-long.jpg');
+  background-size: cover;
 }
 
 #aboutrow {
@@ -95,4 +96,12 @@ body {
 
 #titletext {
   font-size: 70px;
+}
+
+#subtitle {
+  font-size: 50px;
+}
+
+#smalltext {
+  font-size: 20px;
 }
