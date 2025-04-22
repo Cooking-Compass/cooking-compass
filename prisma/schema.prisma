@@ -13,8 +13,9 @@ datasource db {
   // for local development
   // url      = env("DATABASE_URL")
   // for Vercel
-   url       = env("POSTGRES_PRISMA_URL")
-   directUrl = env("POSTGRES_URL_NON_POOLING")
+  url       = env("POSTGRES_PRISMA_URL")
+  directUrl = env("POSTGRES_URL_NON_POOLING")
+  relationMode = "prisma"
 }
 
 enum Role {
@@ -42,19 +43,4 @@ model Stuff {
   quantity  Int
   condition Condition @default(good)
   owner     String
-}
-
-enum Reason {
-  Innapropriate
-  Disgusting
-  Expensive
-}
-
-model UserReport {
-  id        Int       @id @default(autoincrement())
-  owner     String
-  yourname String
-  criminal String
-  description String
-  reason    Reason  @default(Innapropriate)
 }
