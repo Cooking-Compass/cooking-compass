@@ -3,9 +3,13 @@
 'use client';
 
 import { useSession } from 'next-auth/react';
+import { Jost } from 'next/font/google';
 import { usePathname } from 'next/navigation';
-import { Container, Nav, Navbar, NavDropdown } from 'react-bootstrap';
+import { Container, Image, Nav, Navbar, NavDropdown } from 'react-bootstrap';
 import { BoxArrowRight, Lock, PersonFill, PersonPlusFill } from 'react-bootstrap-icons';
+
+// import font
+const jost = Jost({ subsets: ['latin'] });
 
 const NavBar: React.FC = () => {
   const { data: session } = useSession();
@@ -14,8 +18,9 @@ const NavBar: React.FC = () => {
   const role = userWithRole?.randomKey;
   const pathName = usePathname();
   return (
-    <Navbar id="menucolor" expand="lg">
+    <Navbar className={`${jost.className} py-3`} id="menucolor" expand="lg">
       <Container>
+        <Image src="/logo-white.png" alt="Logo" width={300} className="d-inline-block align-top" />
         <Navbar.Brand href="/">Home</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
@@ -52,7 +57,7 @@ const NavBar: React.FC = () => {
                 </NavDropdown.Item>
               </NavDropdown>
             ) : (
-              <NavDropdown id="login-dropdown" title="Login">
+              <NavDropdown className="custom-login-dropdown" id="login-dropdown" title="Login">
                 <NavDropdown.Item id="login-dropdown-sign-in" href="/auth/signin">
                   <PersonFill />
                   Sign in
