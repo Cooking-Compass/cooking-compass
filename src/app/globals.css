@@ -77,10 +77,11 @@ body {
   min-height: 90vh;
 }
 
-#aboutpage {
+#aboutpage, #reportpage {
   min-height: 100vh;
   background-color: var(--pink);
 }
+
 
 #aboutrow {
   min-height: 300px;
