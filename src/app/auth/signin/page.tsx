@@ -1,9 +1,13 @@
 'use client';
 
 import { signIn } from 'next-auth/react';
+import { Jost } from 'next/font/google';
 import React from 'react';
 import { Button, Card, Col, Container, Form, Row } from 'react-bootstrap';
 import '../../globals.css';
+
+// import font
+const jost = Jost({ subsets: ['latin'] });
 
 /** The sign in page. */
 const SignIn = () => {
@@ -27,7 +31,7 @@ const SignIn = () => {
   };
 
   return (
-    <main className="signin">
+    <main className={`${jost.className} signin`}>
       <Container>
         <Row className="justify-content-center" height="500px">
           <Col xs={5}>
