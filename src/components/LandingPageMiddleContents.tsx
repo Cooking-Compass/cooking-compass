@@ -32,7 +32,7 @@ const LandingPageMiddleContents = () => (
             </Link>
           </Col>
           <Col xs="2">
-            <Link href="/recipes" passHref>
+            <Link href="/addRecipe" passHref>
               <Button
                 variant="primary"
                 className="mt-3"
@@ -48,7 +48,7 @@ const LandingPageMiddleContents = () => (
             </Link>
           </Col>
           <Col xs="2">
-            <Link href="/recipes" passHref>
+            <Link href="/about" passHref>
               <Button
                 variant="primary"
                 className="mt-3"
