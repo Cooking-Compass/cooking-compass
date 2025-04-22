@@ -44,3 +44,9 @@ model Stuff {
   condition Condition @default(good)
   owner     String
 }
+
+enum Reason {
+  Innapropriate
+  Expensive
+  Disgusting
+}
