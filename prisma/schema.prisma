@@ -44,3 +44,18 @@ model Stuff {
   condition Condition @default(good)
   owner     String
 }
+
+model UserReport {
+  id          Int    @id @default(autoincrement())
+  owner       String
+  yourname    String
+  criminal    String
+  description String
+  reason      Reason
+}
+
+enum Reason {
+  Innapropriate
+  Expensive
+  Disgusting
+}

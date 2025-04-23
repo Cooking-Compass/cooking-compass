@@ -14,3 +14,11 @@ export const EditStuffSchema = Yup.object({
   condition: Yup.string().oneOf(['excellent', 'good', 'fair', 'poor']).required(),
   owner: Yup.string().required(),
 });
+
+export const UserReportSchema = Yup.object({
+  yourname: Yup.string().required(),
+  criminal: Yup.string().required(),
+  description: Yup.string().required(),
+  reason: Yup.string().oneOf(['Innapropriate', 'Disgusting', 'Expensive']).required(),
+  owner: Yup.string().required(),
+});
