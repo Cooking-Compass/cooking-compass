@@ -23,7 +23,7 @@ export const UserReportSchema = Yup.object({
   owner: Yup.string().required(),
 });
 
-export const AddRecipeSchema = Yup.object().shape({
+export const AddRecipeSchema = Yup.object({
   name: Yup.string().required('Recipe title is required'),
   ingredients: Yup.string().required('Ingredients are required'),
   instructions: Yup.string().required('Instructions are required'),
