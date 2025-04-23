@@ -68,7 +68,14 @@ export async function deleteStuff(id: number) {
  * @param credentials, an object with the following properties: email, password.
  */
 export async function createUser(credentials: { email: string; password: string }) {
-  // console.log(`createUser data: ${JSON.stringify(credentials, null, 2)}`);
+  const existingUser = await prisma.user.findUnique({
+    where: { email: credentials.email },
+  });
+
+  if (existingUser) {
+    throw new Error('User with this email already exists.');
+  }
+
   const password = await hash(credentials.password, 10);
   await prisma.user.create({
     data: {
