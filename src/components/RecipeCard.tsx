@@ -1,22 +1,18 @@
 'use client';
 
 import React from 'react';
+import { Card, Button } from 'react-bootstrap';
 import Link from 'next/link';
-import { Card } from 'react-bootstrap';
-
-// Optional: if you're using Bootstrap
-// import { Card } from 'react-bootstrap';
 
 interface Recipe {
   id: number;
   name: string;
   description: string;
   owner: string;
-  // Add other fields if needed (e.g., imageUrl, tags)
 }
 
 const RecipeCard = ({ recipe }: { recipe: Recipe }) => (
-  <Card className="h-100">
+  <Card className="h-100 shadow-sm">
     <Card.Body>
       <Card.Title>{recipe.name}</Card.Title>
       <Card.Text>{recipe.description}</Card.Text>
@@ -26,7 +22,9 @@ const RecipeCard = ({ recipe }: { recipe: Recipe }) => (
         Owner:
         {recipe.owner}
       </small>
-      <Link href={`/recipes/${recipe.id}`}>View</Link>
+      <Link href={`/recipes/${recipe.id}`} passHref legacyBehavior>
+        <Button variant="primary" size="sm">View</Button>
+      </Link>
     </Card.Footer>
   </Card>
 );
