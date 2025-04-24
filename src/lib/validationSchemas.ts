@@ -22,3 +22,12 @@ export const UserReportSchema = Yup.object({
   reason: Yup.string().oneOf(['Innapropriate', 'Disgusting', 'Expensive']).required(),
   owner: Yup.string().required(),
 });
+
+export const RecipeSchema = Yup.object({
+  name: Yup.string().required(),
+  description: Yup.string().required(),
+  ingredients: Yup.string().required(),
+  instructions: Yup.string().required(),
+  owner: Yup.string().required(),
+  image: Yup.string().required(),
+});
