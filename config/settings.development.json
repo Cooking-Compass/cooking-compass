@@ -9,5 +9,11 @@
     { "name": "Bicycle", "quantity": 2, "owner": "john@foo.com", "condition": "poor" },
     { "name": "Banana", "quantity": 2, "owner": "admin@foo.com", "condition": "good" },
     { "name": "Boogie Board", "quantity": 2, "owner": "admin@foo.com", "condition": "excellent" }
+  ],
+
+  "defaultRecipe": [
+    { "name": "Cookie", "description": "Yummy cookie", "owner": "john@foo.com" },
+    { "name": "Banana", "description": "Yummy banana", "owner": "john@foo.com" },
+    { "name": "Cake", "description": "Yummy cake", "owner": "admin@foo.com" }
   ]
 }

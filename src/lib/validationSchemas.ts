@@ -22,3 +22,9 @@ export const UserReportSchema = Yup.object({
   reason: Yup.string().oneOf(['Innapropriate', 'Disgusting', 'Expensive']).required(),
   owner: Yup.string().required(),
 });
+
+export interface RecipeItem {
+  name: string;
+  image: string;
+  description: string;
+}

@@ -53,6 +53,13 @@ model UserReport {
   reason      Reason
 }
 
+model Recipe {
+  id          Int    @id @default(autoincrement())
+  name        String @unique
+  description String
+  owner       String
+}
+
 enum Reason {
   Innapropriate
   Expensive
