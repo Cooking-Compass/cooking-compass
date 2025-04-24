@@ -40,15 +40,15 @@ model User {
 }
 
 model Recipe {
-  id           Int      @id @default(autoincrement())
-  name         String
-  ingredients  String
-  instructions String
-  image        String
-  description  String
-  owner        User     @relation(fields: [ownerId], references: [id])
-  ownerId      Int
-  createdAt    DateTime @default(now())
+  id           Int      @id @default(autoincrement()) 
+  name         String   
+  ingredients  String   
+  instructions String   
+  image        String   
+  description  String   
+  owner        User     @relation(fields: [ownerId], references: [id]) // Relation to User
+  ownerId      Int      // Foreign key to User
+  createdAt    DateTime @default(now()) // Timestamp for when the recipe was created
 }
 
 model Stuff {
