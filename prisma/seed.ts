@@ -47,6 +47,9 @@ async function main() {
         name: recipe.name,
         description: recipe.description,
         owner: recipe.owner,
+        ingredients: recipe.ingredients,
+        instructions: recipe.instructions,
+        image: recipe.image,
       },
     });
   }

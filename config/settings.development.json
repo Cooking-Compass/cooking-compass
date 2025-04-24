@@ -12,8 +12,8 @@
   ],
 
   "defaultRecipe": [
-    { "name": "Cookie", "description": "Yummy cookie", "owner": "john@foo.com" },
-    { "name": "Banana", "description": "Yummy banana", "owner": "john@foo.com" },
-    { "name": "Cake", "description": "Yummy cake", "owner": "admin@foo.com" }
+    { "name": "Cookie", "description": "Yummy cookie", "owner": "john@foo.com", "ingredients": "flour, sugar, egg", "instructions": "Mix all ingredients and bake at 350°F for 10 minutes.", "image": "https://example.com/cookie.jpg" },
+    { "name": "Banana", "description": "Yummy banana", "owner": "john@foo.com", "ingredients": "banana, sugar, egg", "instructions": "Peel and eat.", "image": "https://example.com/banana.jpg" },
+    { "name": "Cake", "description": "Yummy cake", "owner": "admin@foo.com", "ingredients": "flour, sugar, egg", "instructions": "Mix all ingredients and bake at 350°F for 10 minutes.", "image": "https://example.com/cake.jpg" }
   ]
 }
