@@ -25,18 +25,23 @@ const RecipeListPage = async () => {
   });
 
   return (
-    <main>
+    <main id="explorepage">
       <Container id="list" fluid className="py-3">
         <Container>
           <Row>
             <Col>
-              <h1 className="text-center">My Recipes</h1>
+              <h1 className="text-center">Recipes</h1>
               <Row xs={1} md={2} lg={3} className="g-4">
                 {recipes.map((recipe) => (
                   <Col key={recipe.id}>
-                    <div className="border rounded p-3 bg-light shadow-sm">
-                      <h5>{recipe.name}</h5>
-                      <p>{recipe.description}</p>
+                    <div id="recipecard" className="border rounded p-3 shadow-sm">
+                      <h5 id="recipetitle">{recipe.name}</h5>
+                      <p id="recipedescription">{recipe.description}</p>
+                      <Container className="text-end">
+                        <button id="viewrecipe" type="button" className="btn">
+                          View Recipe
+                        </button>
+                      </Container>
                     </div>
                   </Col>
                 ))}
