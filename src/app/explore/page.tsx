@@ -1,9 +1,6 @@
 /* eslint-disable max-len */
-import { getServerSession } from 'next-auth';
 import { Col, Container, Row } from 'react-bootstrap';
 import { prisma } from '@/lib/prisma';
-import { loggedInProtectedPage } from '@/lib/page-protection';
-import authOptions from '@/lib/authOptions';
 
 interface Recipe {
   id: number;
@@ -15,13 +12,9 @@ interface Recipe {
 /** Render a list of recipes for the logged-in user. */
 const RecipeListPage = async () => {
   // Protect the page
-  const session = await getServerSession(authOptions);
-  loggedInProtectedPage(session as { user: { email: string; id: string; randomKey: string } } | null);
-
-  const owner = session?.user?.email || '';
 
   const recipes: Recipe[] = await prisma.recipe.findMany({
-    where: { owner },
+    where: {},
   });
 
   return (
