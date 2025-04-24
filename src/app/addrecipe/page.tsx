@@ -4,7 +4,7 @@ import authOptions from '@/lib/authOptions';
 // eslint-disable-next-line import/extensions
 import { loggedInProtectedPage } from '@/lib/page-protection';
 // eslint-disable-next-line import/extensions
-import SubmitRecipeForm from '@/components/SubmitRecipeForm';
+import RecipeForm from '@/components/SubmitRecipe';
 
 const AddRecipe = async () => {
   // Protect the page, only logged in users can access it.
@@ -16,7 +16,7 @@ const AddRecipe = async () => {
   );
   return (
     <main>
-      <SubmitRecipeForm />
+      <RecipeForm />
     </main>
   );
 };

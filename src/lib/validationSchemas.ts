@@ -23,8 +23,11 @@ export const UserReportSchema = Yup.object({
   owner: Yup.string().required(),
 });
 
-export interface RecipeItem {
-  name: string;
-  image: string;
-  description: string;
-}
+export const RecipeSchema = Yup.object({
+  name: Yup.string().required(),
+  description: Yup.string().required(),
+  ingredients: Yup.string().required(),
+  instructions: Yup.string().required(),
+  owner: Yup.string().required(),
+  image: Yup.string().required(),
+});
