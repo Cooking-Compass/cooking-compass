@@ -31,39 +31,41 @@ const SignIn = () => {
   };
 
   return (
-    <main className={`${jost.className} signin`}>
-      <Container>
-        <Row className="justify-content-center" height="500px">
-          <Col xs={5}>
-            <br />
-            <h1 className="text-center">Sign In</h1>
-            <Card>
-              <Card.Body>
-                <Form method="post" onSubmit={handleSubmit}>
-                  <Form.Group controlId="formBasicEmail">
-                    <Form.Label>Email</Form.Label>
-                    <input name="email" type="text" className="form-control" />
-                  </Form.Group>
-                  <Form.Group>
+    <main className={`${jost.className} signin d-flex flex-column min-vh-100`}>
+      <div className="flex-grow-1">
+        <Container>
+          <Row className="justify-content-center" height="500px">
+            <Col xs={5}>
+              <br />
+              <h1 className="text-center">Sign In</h1>
+              <Card>
+                <Card.Body>
+                  <Form method="post" onSubmit={handleSubmit}>
+                    <Form.Group controlId="formBasicEmail">
+                      <Form.Label>Email</Form.Label>
+                      <input name="email" type="text" className="form-control" />
+                    </Form.Group>
+                    <Form.Group>
+                      <br />
+                      <Form.Label>Password</Form.Label>
+                      <input name="password" type="password" className="form-control" />
+                    </Form.Group>
                     <br />
-                    <Form.Label>Password</Form.Label>
-                    <input name="password" type="password" className="form-control" />
-                  </Form.Group>
-                  <br />
-                  <Button type="submit" className="mt-3">
-                    Sign in
-                  </Button>
-                </Form>
-              </Card.Body>
-              <Card.Footer>
-                Don&apos;t have an account?
-                {' '}
-                <a href="/auth/signup">Sign up!</a>
-              </Card.Footer>
-            </Card>
-          </Col>
-        </Row>
-      </Container>
+                    <Button type="submit" className="mt-3">
+                      Sign in
+                    </Button>
+                  </Form>
+                </Card.Body>
+                <Card.Footer>
+                  Don&apos;t have an account?
+                  {' '}
+                  <a href="/auth/signup">Sign up!</a>
+                </Card.Footer>
+              </Card>
+            </Col>
+          </Row>
+        </Container>
+      </div>
     </main>
   );
 };

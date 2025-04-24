@@ -46,8 +46,8 @@ const SignUp = () => {
   };
 
   return (
-    <main className={`${jost.className} d-flex flex-column min-vh-100`}>
-      <Container className="flex-grow-1">
+    <main className={`${jost.className} signup d-flex flex-column min-vh-100`}>
+      <Container>
         <Row className="justify-content-center">
           <Col xs={12} md={6} lg={5}>
             <h1 className="text-center mt-4">Sign Up</h1>

@@ -24,7 +24,7 @@ const AboutPage = () => (
         </h1>
       </Row>
       <Row className="justify-content-start align-items-end pt-5">
-        <h5>About our Website</h5>
+        <h5 id="smalltext">About our Website</h5>
         <hr />
       </Row>
       <Row id="aboutrow" className="justify-content-start">

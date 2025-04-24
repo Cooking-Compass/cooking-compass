@@ -8,17 +8,26 @@
   --rust: #b83700;
 }
 
-.custom-login-dropdown .dropdown-toggle {
+/* .custom-login-dropdown .dropdown-toggle {
+  font-size: 1.2rem;
+} */
+
+.footer {
+  margin-top: auto
+}
+
+.navbar-text {
   font-size: 1.2rem; /* adjusting sizing */
 }
 
-.signin {
+.signin, .signup {
   background-color: url('../../public/leaves4.jpg');
-  flex: 1;
+  display: flex;
 }
 
 .recipe {
-  background: fixed center url('../../public/pinkcook.webp');
+  background: fixed center url('../../public/leaves2.jpg');
+  background-size: cover;
   flex: 1;
 }
 
@@ -86,7 +95,7 @@ body {
 
 #aboutpage, #reportpage {
   min-height: 100vh;
-  background: url('../../public/green-long.jpg');
+  background: url('../../public/derrick-bg.png');
   background-size: cover;
 }
 
