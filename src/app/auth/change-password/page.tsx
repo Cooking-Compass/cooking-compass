@@ -1,13 +1,17 @@
 'use client';
 
-import { useForm } from 'react-hook-form';
-import { useSession } from 'next-auth/react';
-import { yupResolver } from '@hookform/resolvers/yup';
-import * as Yup from 'yup';
-import swal from 'sweetalert';
-import { Card, Col, Container, Button, Form, Row } from 'react-bootstrap';
-import { changePassword } from '@/lib/dbActions';
 import LoadingSpinner from '@/components/LoadingSpinner';
+import { changePassword } from '@/lib/dbActions';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { useSession } from 'next-auth/react';
+import { Jost } from 'next/font/google';
+import { Button, Card, Col, Container, Form, Row } from 'react-bootstrap';
+import { useForm } from 'react-hook-form';
+import swal from 'sweetalert';
+import * as Yup from 'yup';
+
+// import font
+const jost = Jost({ subsets: ['latin'] });
 
 type ChangePasswordForm = {
   oldpassword: string;
@@ -53,9 +57,10 @@ const ChangePassword = () => {
 
   return (
     <main>
-      <Container>
+      <Container className={`${jost.className} d-flex flex-column min-vh-100`}>
         <Row className="justify-content-center">
           <Col xs={5}>
+            <br />
             <h1 className="text-center">Change Password</h1>
             <Card>
               <Card.Body>
@@ -69,7 +74,7 @@ const ChangePassword = () => {
                     />
                     <div className="invalid-feedback">{errors.oldpassword?.message}</div>
                   </Form.Group>
-
+                  <br />
                   <Form.Group className="form-group">
                     <Form.Label>New Password</Form.Label>
                     <input
@@ -79,6 +84,7 @@ const ChangePassword = () => {
                     />
                     <div className="invalid-feedback">{errors.password?.message}</div>
                   </Form.Group>
+                  <br />
                   <Form.Group className="form-group">
                     <Form.Label>Confirm Password</Form.Label>
                     <input
@@ -88,6 +94,7 @@ const ChangePassword = () => {
                     />
                     <div className="invalid-feedback">{errors.confirmPassword?.message}</div>
                   </Form.Group>
+                  <br />
                   <Form.Group className="form-group py-3">
                     <Row>
                       <Col>
