@@ -3,15 +3,9 @@
 import React from 'react';
 import { Card, Button } from 'react-bootstrap';
 import Link from 'next/link';
+import { RecipeItem } from '@/lib/validationSchemas';
 
-interface Recipe {
-  id: number;
-  name: string;
-  description: string;
-  owner: string;
-}
-
-const RecipeCard = ({ recipe }: { recipe: Recipe }) => (
+const RecipeCard = ({ recipe }: { recipe: RecipeItem }) => (
   <Card className="h-100 shadow-sm">
     <Card.Body>
       <Card.Title>{recipe.name}</Card.Title>

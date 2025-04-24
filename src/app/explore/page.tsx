@@ -5,13 +5,7 @@ import { prisma } from '@/lib/prisma';
 import authOptions from '@/lib/authOptions';
 import { loggedInProtectedPage } from '@/lib/page-protection';
 import RecipeCard from '@/components/RecipeCard';
-
-interface Recipe {
-  id: number;
-  name: string;
-  description: string;
-  owner: string;
-}
+import { RecipeItem } from '@/lib/validationSchemas';
 
 const RecipeListPage = async () => {
   const session = await getServerSession(authOptions);
@@ -19,7 +13,7 @@ const RecipeListPage = async () => {
 
   const owner = session?.user?.email ?? '';
 
-  const recipes: Recipe[] = await prisma.recipe.findMany({
+  const recipes: RecipeItem[] = await prisma.recipe.findMany({
     where: { owner },
   });
 
