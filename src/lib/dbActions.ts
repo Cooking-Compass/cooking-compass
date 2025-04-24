@@ -48,7 +48,28 @@ export async function addReport(data: { owner: string; yourname: string; crimina
       reason,
     },
   });
-  redirect('/list');
+  redirect('/');
+}
+
+export async function addRecipe(data: {
+  name: string;
+  description: string;
+  ingredients: string;
+  instructions: string;
+  owner: string;
+  image: string;
+}) {
+  await prisma.recipe.create({
+    data: {
+      name: data.name,
+      description: data.description,
+      ingredients: data.ingredients,
+      instructions: data.instructions,
+      owner: data.owner,
+      image: data.image,
+    },
+  });
+  redirect('/');
 }
 
 /**
