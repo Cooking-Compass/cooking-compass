@@ -29,5 +29,6 @@ export const AddRecipeSchema = Yup.object({
   instructions: Yup.string().required('Instructions are required'),
   image: Yup.string().url('Must be a valid URL').required('Image URL is required'),
   description: Yup.string().required('Description is required'),
+  condition: Yup.string().oneOf(['excellent', 'good', 'fair', 'poor']).required(),
   owner: Yup.string().required('Owner is required'),
 });
