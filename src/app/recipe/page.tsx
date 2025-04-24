@@ -1,10 +1,14 @@
 'use client';
 
+import { Jost } from 'next/font/google';
 import { Container, Image } from 'react-bootstrap';
 import '../globals.css';
 
+// import font
+const jost = Jost({ subsets: ['latin'] });
+
 const Recipe = () => (
-  <main className="recipe">
+  <main className={`${jost.className} recipe`}>
     <h1 className="text-center py-3">Apple Pie</h1>
 
     <Container className="flex-container">

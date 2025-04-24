@@ -1,12 +1,16 @@
 'use client';
 
-import { signIn } from 'next-auth/react';
-import { useForm } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
-import * as Yup from 'yup';
-import { Card, Col, Container, Button, Form, Row } from 'react-bootstrap';
 import { createUser } from '@/lib/dbActions';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { signIn } from 'next-auth/react';
+import { Jost } from 'next/font/google';
+import { Button, Card, Col, Container, Form, Row } from 'react-bootstrap';
+import { useForm } from 'react-hook-form';
+import * as Yup from 'yup';
 import '../../globals.css';
+
+// import font
+const jost = Jost({ subsets: ['latin'] });
 
 type SignUpForm = {
   email: string;
@@ -42,15 +46,15 @@ const SignUp = () => {
   };
 
   return (
-    <main className="d-flex flex-column min-vh-100">
-      <Container className="flex-grow-1">
+    <main className={`${jost.className} signup d-flex flex-column min-vh-100`}>
+      <Container>
         <Row className="justify-content-center">
           <Col xs={12} md={6} lg={5}>
             <h1 className="text-center mt-4">Sign Up</h1>
             <Card>
               <Card.Body>
                 <Form onSubmit={handleSubmit(onSubmit)}>
-                  <Form.Group className="form-group">
+                  <Form.Group className="form-group mt-3">
                     <Form.Label>Email</Form.Label>
                     <input
                       type="text"
@@ -60,7 +64,7 @@ const SignUp = () => {
                     <div className="invalid-feedback">{errors.email?.message}</div>
                   </Form.Group>
 
-                  <Form.Group className="form-group">
+                  <Form.Group className="form-group mt-3">
                     <Form.Label>Password</Form.Label>
                     <input
                       type="password"
@@ -69,7 +73,7 @@ const SignUp = () => {
                     />
                     <div className="invalid-feedback">{errors.password?.message}</div>
                   </Form.Group>
-                  <Form.Group className="form-group">
+                  <Form.Group className="form-group mt-3">
                     <Form.Label>Confirm Password</Form.Label>
                     <input
                       type="password"
@@ -81,7 +85,7 @@ const SignUp = () => {
                   <Form.Group className="form-group py-3">
                     <Row>
                       <Col>
-                        <Button type="submit" className="btn btn-primary w-100">
+                        <Button type="submit" className="btn btn-primary w-100 mt-3">
                           Register
                         </Button>
                       </Col>
@@ -89,7 +93,7 @@ const SignUp = () => {
                         <Button
                           type="button"
                           onClick={() => reset()}
-                          className="btn btn-warning w-100"
+                          className="btn btn-warning w-100 mt-3"
                         >
                           Reset
                         </Button>
@@ -100,8 +104,8 @@ const SignUp = () => {
               </Card.Body>
               <Card.Footer>
                 Already have an account?
-                <a href="/auth/signin">Sign in</a>
-                <footer className="footer bg-light text-center py-3 mt-4" />
+                {' '}
+                <a href="/auth/signin">Sign in!</a>
               </Card.Footer>
             </Card>
           </Col>

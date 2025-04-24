@@ -1,8 +1,12 @@
+import { Jost } from 'next/font/google';
 import { Col, Container, Row } from 'react-bootstrap';
 import { Compass } from 'react-bootstrap-icons';
 
+// import font
+const jost = Jost({ subsets: ['latin'] });
+
 const AboutPage = () => (
-  <Container id="aboutpage" fluid>
+  <Container id="aboutpage" className={`${jost.className} py-1`} fluid>
     <Container className="py-5">
       <Row className="justify-content-center">
         <h1 id="titletext">
@@ -20,7 +24,7 @@ const AboutPage = () => (
         </h1>
       </Row>
       <Row className="justify-content-start align-items-end pt-5">
-        <h5>About our Website</h5>
+        <h5 id="smalltext">About our Website</h5>
         <hr />
       </Row>
       <Row id="aboutrow" className="justify-content-start">
@@ -31,16 +35,16 @@ const AboutPage = () => (
       </Row>
     </Container>
     <Container>
-      <Row id="aboutrow">
+      <Row>
         <Col md={6} className="text-center">
-          <Compass size={250} />
+          <Compass size={300} />
         </Col>
         <Col md={6} className="text-end">
-          <h1 className="pb-3">
+          <h1 id="subtitle" className="pb-3">
             <strong>Our Vision</strong>
           </h1>
           <hr />
-          <p>
+          <p id="smalltext">
             The goal of this site is to help improve the nutritional content and variety of foods eaten
             by students by providing recipes from their fellow colleagues. Being able to easily access and scroll
             through these recipes from other UH students, they can also learn and create new, and maybe fun, foods
@@ -51,15 +55,15 @@ const AboutPage = () => (
       </Row>
     </Container>
     <Container>
-      <Row id="aboutrow" className="mt-5">
+      <Row className="mt-5">
         <Col md={12}>
-          <h1 className="text-center">
+          <h1 id="subtitle" className="text-center">
             <strong>Frequently Asked Questions</strong>
           </h1>
           <hr />
-          <ul>
+          <ul id="smalltext">
             <li>
-              <strong>I have my own recipe to submit, how do I do that?</strong>
+              <strong>How do I submit my own recipe?</strong>
               <ul>
                 <li>
                   To submit your own recipe, you must first create an account. Once you have an account, you can
@@ -78,10 +82,11 @@ const AboutPage = () => (
             </li>
             <br />
             <li>
-              <strong>bruh we need more questions</strong>
+              <strong>What kinds of recipes can I submit?</strong>
               <ul>
                 <li>
-                  add more later
+                  Any recipe that can be made with a toaster oven. This includes, but is not limited to, baked goods,
+                  casseroles, and roasted vegetables.
                 </li>
               </ul>
             </li>

@@ -3,16 +3,31 @@
   --pink: #F1DDDF;
   --light-green: #86B049;
   --dark-green: #476930;
+  --darker-green: #2a473e;
   --brown: #c8b99b;
+  --rust: #b83700;
 }
 
-.signin {
-  background-color: var(--pink);
-  flex: 1;
+/* .custom-login-dropdown .dropdown-toggle {
+  font-size: 1.2rem;
+} */
+
+.footer {
+  margin-top: auto
+}
+
+.navbar-text {
+  font-size: 1.2rem; /* adjusting sizing */
+}
+
+.signin, .signup {
+  background-color: url('../../public/leaves4.jpg');
+  display: flex;
 }
 
 .recipe {
-  background: fixed center url('../../public/pinkcook.webp');
+  background: fixed center url('../../public/leaves2.jpg');
+  background-size: cover;
   flex: 1;
 }
 
@@ -44,9 +59,10 @@ body {
   height: 100%;
   padding: 0;
   margin: 0;
-  background: fixed center url('../../public/pinkcook.webp');
+  background: fixed center url('../../public/leaves.jpg');
   background-size: cover;
 }
+
 .wrapper {
   box-sizing: border-box;
   min-height: 100%;
@@ -60,13 +76,13 @@ body {
 
 #menucolor, #menucolor .navbar-brand,
 #menucolor .nav-link {
-  background-color: rgb(20, 20, 20);
+  background-color: var(--darker-green);
   color: white;
 }
 
 #landing-page {
-  min-height: 100vh; 
-  display: flex; 
+  min-height: 100vh;
+  display: flex;
 }
 
 #middlerow {
@@ -79,9 +95,9 @@ body {
 
 #aboutpage, #reportpage {
   min-height: 100vh;
-  background-color: var(--pink);
+  background: url('../../public/derrick-bg.png');
+  background-size: cover;
 }
-
 
 #aboutrow {
   min-height: 300px;
@@ -89,4 +105,12 @@ body {
 
 #titletext {
   font-size: 70px;
+}
+
+#subtitle {
+  font-size: 50px;
+}
+
+#smalltext {
+  font-size: 20px;
 }
