@@ -39,12 +39,12 @@
 }
 
 .recipe-image {
-  float: left;
+  float: right;
   width: 400px;
   height: 300px;
   object-fit: cover;
   border-radius: 3px;
-  margin-right: 30px;
+  margin-left: 30px;
   margin-bottom: 20px;
 }
 
@@ -62,6 +62,8 @@ body {
   background: fixed center url('../../public/leaves.jpg');
   background-size: cover;
 }
+
+
 
 .wrapper {
   box-sizing: border-box;
