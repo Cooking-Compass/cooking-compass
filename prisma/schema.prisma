@@ -61,7 +61,7 @@ enum Reason {
 
 model Recipe {
   id          Int    @id @default(autoincrement())
-  name        String
+  name        String @unique
   description String
   ingredients String
   instructions String

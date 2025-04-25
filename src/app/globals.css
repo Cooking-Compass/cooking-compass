@@ -91,7 +91,7 @@ body {
   height: 60vh
 }
 
-#submitform {
+#submitform, #explorepage {
   min-height: 90vh;
 }
 
@@ -107,6 +107,28 @@ body {
 
 #titletext {
   font-size: 70px;
+}
+
+#recipecard {
+  min-height: 250px;
+  background-color: white;
+}
+
+#recipetitle {
+  font-size: 30px;
+  background-color: var(--pink);
+  border-radius: 10px;
+  text-align: center;
+  color:rgb(7, 5, 5);
+}
+
+#viewrecipe {
+  background-color: var(--darker-green);
+  color: white;
+}
+
+#recipedescription {
+  min-height: 200px;
 }
 
 #subtitle {

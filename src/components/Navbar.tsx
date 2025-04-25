@@ -25,7 +25,7 @@ const NavBar: React.FC = () => {
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
-          <Navbar.Brand href="/" className="navbar-text py-3 px-5">
+          <Navbar.Brand href="/explore" className="navbar-text py-3 px-5">
             Explore
           </Navbar.Brand>
           <Navbar.Brand href="/addrecipe" className="navbar-text py-3">
