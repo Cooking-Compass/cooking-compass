@@ -16,7 +16,7 @@ const LandingPageMiddleContents = () => (
         </Row>
         <Row className="d-flex justify-content-center">
           <Col xs="2">
-            <Link href="/recipes" passHref>
+            <Link href="/explore" passHref>
               <Button
                 variant="primary"
                 className="mt-3"
