@@ -8,8 +8,6 @@ import { loggedInProtectedPage } from '@/lib/page-protection';
 
 /** Render a list of recipes for the logged-in user. */
 const RecipeListPage = async () => {
-  // Protect the page
-  // Protect the page, only logged in users can access it.
   const session = await getServerSession(authOptions);
   loggedInProtectedPage(
     session as {
