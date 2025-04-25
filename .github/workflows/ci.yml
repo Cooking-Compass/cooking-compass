@@ -1,4 +1,4 @@
-name: ci-nextjs-application-template
+name: Cooking Compass
 on:
   push:
     branches: [main, master]
