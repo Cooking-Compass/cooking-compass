@@ -2,9 +2,20 @@
 import { Col, Container, Row } from 'react-bootstrap';
 import { prisma } from '@/lib/prisma';
 import RecipeItem from '@/components/RecipeItem';
+import authOptions from '@/lib/authOptions';
+import { getServerSession } from 'next-auth';
+import { loggedInProtectedPage } from '@/lib/page-protection';
 
 /** Render a list of recipes for the logged-in user. */
 const RecipeListPage = async () => {
+  const session = await getServerSession(authOptions);
+  loggedInProtectedPage(
+    session as {
+      user: { email: string; id: string; randomKey: string };
+      // eslint-disable-next-line @typescript-eslint/comma-dangle
+    } | null,
+  );
+
   const recipes = await prisma.recipe.findMany({
     where: {},
   });
