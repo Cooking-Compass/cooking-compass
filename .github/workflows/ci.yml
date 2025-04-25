@@ -1,4 +1,4 @@
-name: Cooking Compass
+name: ci-CookingCompass
 on:
   push:
     branches: [main, master]
