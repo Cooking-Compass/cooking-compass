@@ -23,4 +23,5 @@ test('Submit Recipe', async ({ page }) => {
   await page.locator('textarea[name="description"]').fill('desc');
   await page.locator('textarea[name="instructions"]').click();
   await page.locator('textarea[name="instructions"]').fill('instruction');
+  await page.getByRole('button', { name: 'Submit' }).click();
 });
