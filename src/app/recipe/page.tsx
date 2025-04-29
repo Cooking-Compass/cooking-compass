@@ -7,6 +7,20 @@ import '../globals.css';
 // import font
 const jost = Jost({ subsets: ['latin'] });
 
+// import IndividualRecipe from '@/components/IndividualRecipe';
+
+// const recipe = async () => {
+//   const res = await fetch('https://https://cooking-compass-khaki.vercel.app/recipe');
+//   const recipe = await res.json();
+//   return recipe;
+// };
+
+// const Recipe = () => {
+//   <main>
+//     <IndividualRecipe />
+//   </main>
+// };
+
 const Recipe = () => (
   <main className={`${jost.className} recipe`}>
     <h1 className="text-center py-3">Apple Pie</h1>

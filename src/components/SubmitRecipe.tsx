@@ -2,15 +2,19 @@
 
 'use client';
 
+import LoadingSpinner from '@/components/LoadingSpinner';
+import { addRecipe } from '@/lib/dbActions';
+import { RecipeSchema } from '@/lib/validationSchemas';
+import { yupResolver } from '@hookform/resolvers/yup';
 import { useSession } from 'next-auth/react';
+import { Jost } from 'next/font/google';
+import { redirect } from 'next/navigation';
 import { Button, Card, Col, Container, Form, Row } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
 import swal from 'sweetalert';
-import { redirect } from 'next/navigation';
-import LoadingSpinner from '@/components/LoadingSpinner';
-import { RecipeSchema } from '@/lib/validationSchemas';
-import { addRecipe } from '@/lib/dbActions';
+
+// import font
+const jost = Jost({ subsets: ['latin'] });
 
 // eslint-disable-next-line max-len
 const onSubmit = async (data: {
@@ -47,7 +51,7 @@ const RecipeForm: React.FC = () => {
   }
 
   return (
-    <Container id="reportpage" fluid className="py-3">
+    <Container id="submitrecipe" fluid className={`${jost.className} py-3 d-flex flex-column min-vh-100`}>
       <Row className="justify-content-center">
         <Col xs={5}>
           <Col className="text-center">
@@ -102,7 +106,14 @@ const RecipeForm: React.FC = () => {
                 <Form.Group className="form-group">
                   <Row className="pt-3">
                     <Col>
-                      <Button type="submit" variant="primary">
+                      <Button
+                        style={{
+                          backgroundColor: 'var(--rust)',
+                          borderColor: 'var(--rust)',
+                        }}
+                        type="submit"
+                        variant="primary"
+                      >
                         Submit
                       </Button>
                     </Col>

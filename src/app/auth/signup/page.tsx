@@ -85,16 +85,19 @@ const SignUp = () => {
                   <Form.Group className="form-group py-3">
                     <Row>
                       <Col>
-                        <Button type="submit" className="btn btn-primary w-100 mt-3">
+                        <Button
+                          style={{
+                            backgroundColor: 'var(--rust)',
+                            borderColor: 'var(--rust)',
+                          }}
+                          type="submit"
+                          className="btn btn-primary w-100 mt-3"
+                        >
                           Register
                         </Button>
                       </Col>
                       <Col>
-                        <Button
-                          type="button"
-                          onClick={() => reset()}
-                          className="btn btn-warning w-100 mt-3"
-                        >
+                        <Button type="button" onClick={() => reset()} className="btn btn-warning w-100 mt-3">
                           Reset
                         </Button>
                       </Col>
@@ -104,7 +107,6 @@ const SignUp = () => {
               </Card.Body>
               <Card.Footer>
                 Already have an account?
-                {' '}
                 <a href="/auth/signin">Sign in!</a>
               </Card.Footer>
             </Card>

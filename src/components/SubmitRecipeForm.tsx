@@ -1,8 +1,12 @@
 'use client';
 
+import { Jost } from 'next/font/google';
 import React from 'react';
 import { Button, Card, Col, Container, Form, Row } from 'react-bootstrap';
 import { SubmitHandler, useForm } from 'react-hook-form';
+
+// import font
+const jost = Jost({ subsets: ['latin'] });
 
 interface RecipeFormData {
   name: string;
@@ -48,7 +52,7 @@ const SubmitRecipeForm: React.FC = () => {
   };
 
   return (
-    <Container className="py-3" id="submitform">
+    <Container id="submitform" className={`${jost.className} py-3`}>
       <Row className="justify-content-center">
         <Col xs={10}>
           <Col className="text-center">
@@ -76,8 +80,10 @@ const SubmitRecipeForm: React.FC = () => {
                 <Row>
                   <Col>
                     <Form.Group>
+                      <br />
                       <Form.Label>Image</Form.Label>
-                      <textarea
+                      <input
+                        type="text"
                         {...register('image', { required: 'Image is required' })}
                         className={`form-control ${errors.image ? 'is-invalid' : ''}`}
                       />
@@ -90,6 +96,7 @@ const SubmitRecipeForm: React.FC = () => {
                 <Row>
                   <Col>
                     <Form.Group>
+                      <br />
                       <Form.Label>Description</Form.Label>
                       <textarea
                         {...register('description', { required: 'Description is required' })}
@@ -104,9 +111,9 @@ const SubmitRecipeForm: React.FC = () => {
                 <Row>
                   <Col>
                     <Form.Group>
+                      <br />
                       <Form.Label>Ingredients</Form.Label>
-                      <input
-                        type="text"
+                      <textarea
                         {...register('ingredients', { required: 'Ingredients are required' })}
                         className={`form-control ${errors.ingredients ? 'is-invalid' : ''}`}
                       />
@@ -117,6 +124,7 @@ const SubmitRecipeForm: React.FC = () => {
 
                 {/* Instructions */}
                 <Form.Group>
+                  <br />
                   <Form.Label>Instructions</Form.Label>
                   <textarea
                     {...register('instructions', { required: 'Instructions are required' })}
@@ -132,7 +140,14 @@ const SubmitRecipeForm: React.FC = () => {
                 <Form.Group className="form-group">
                   <Row className="pt-3">
                     <Col>
-                      <Button type="submit" variant="primary">
+                      <Button
+                        style={{
+                          backgroundColor: 'var(--rust)',
+                          borderColor: 'var(--rust)',
+                        }}
+                        type="submit"
+                        variant="primary"
+                      >
                         Submit
                       </Button>
                     </Col>
