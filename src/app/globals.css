@@ -89,8 +89,12 @@ body {
   height: 60vh
 }
 
-#submitform, #explorepage {
+#submitform {
   min-height: 90vh;
+}
+
+#explorepage {
+  margin-bottom: auto;
 }
 
 #aboutpage, #reportpage {
@@ -127,6 +131,7 @@ body {
 
 #recipedescription {
   min-height: 200px;
+  max-height: 200px;
 }
 
 #subtitle {
@@ -135,4 +140,12 @@ body {
 
 #smalltext {
   font-size: 20px;
+}
+
+#recipeimage {
+  max-width: 250px;
+  border-width: 10px;
+  border-color: var(--pink);
+  border-style: solid;
+  border-radius: 10px;
 }

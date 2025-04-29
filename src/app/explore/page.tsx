@@ -28,7 +28,7 @@ const RecipeListPage = async () => {
             <Col>
               <h1 className="text-center">Recipes</h1>
               <Row xs={1} md={2} lg={3} className="g-4">
-                {recipes.slice(0, 6).map((recipe) => (
+                {recipes.map((recipe) => (
                   <Col>
                     <RecipeItem key={recipe.id} {...recipe} />
                   </Col>

@@ -1,15 +1,22 @@
 import { Recipe } from '@prisma/client';
-import { Container } from 'react-bootstrap';
+import { Col, Container, Image, Row } from 'react-bootstrap';
 
-const RecipeItem = ({ name, description }: Recipe) => (
+const RecipeItem = ({ name, description, image }: Recipe) => (
   <div id="recipecard" className="border rounded p-3 shadow-sm">
     <h5 id="recipetitle">{name}</h5>
     <p id="recipedescription">{description}</p>
-    <Container className="text-end">
-      <button id="viewrecipe" type="button" className="btn">
-        View Recipe
-      </button>
-    </Container>
+    <Row className="justify-content-center mb-3">
+      <Col xs={6} className="text-center">
+        <Image id="recipeimage" src={image} alt="Recipe Image" />
+      </Col>
+      <Col xs={6} className="d-flex align-items-end justify-content-center">
+        <Container className="text-end">
+          <button id="viewrecipe" type="button" className="btn">
+            View Recipe
+          </button>
+        </Container>
+      </Col>
+    </Row>
   </div>
 );
 
