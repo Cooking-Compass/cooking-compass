@@ -6,12 +6,14 @@ import { useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 // eslint-disable-next-line import/extensions
+import { Recipe } from '@prisma/client';
+// eslint-disable-next-line import/extensions
 import RecipeItem from '@/components/RecipeItem';
 
 const SearchPage = () => {
   const searchParams = useSearchParams();
   const query = searchParams.get('q') || '';
-  const [results, setResults] = useState<any[]>([]);
+  const [results, setResults] = useState<Recipe[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
