@@ -2,12 +2,13 @@
 import { Col, Container, Row } from 'react-bootstrap';
 import { prisma } from '@/lib/prisma';
 import RecipeItem from '@/components/RecipeItem';
-import authOptions from '@/lib/authOptions';
 import { getServerSession } from 'next-auth';
+import authOptions from '@/lib/authOptions';
 import { loggedInProtectedPage } from '@/lib/page-protection';
 
 /** Render a list of recipes for the logged-in user. */
 const RecipeListPage = async () => {
+  // Protect the page, only logged in users can access it.
   const session = await getServerSession(authOptions);
   loggedInProtectedPage(
     session as {

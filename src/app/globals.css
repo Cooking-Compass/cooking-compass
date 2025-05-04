@@ -91,6 +91,10 @@ body {
   display: flex;
 }
 
+#searchpage {
+  margin-bottom: auto;
+}
+
 #middlerow {
   height: 60vh
 }
