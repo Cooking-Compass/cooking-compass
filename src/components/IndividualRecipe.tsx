@@ -1,8 +1,8 @@
 'use client';
 
+import '@/app/globals.css';
 import { Jost } from 'next/font/google';
 import { Container, Image } from 'react-bootstrap';
-import '../globals.css';
 
 // import font
 const jost = Jost({ subsets: ['latin'] });
@@ -13,7 +13,7 @@ type RecipeData = {
   image: string;
   description: string;
   ingredients: string[];
-  instructions: string[];
+  instructions: { id: string; step: string }[];
 };
 
 const Recipe = ({ recipe }: { recipe: RecipeData }) => (
@@ -29,11 +29,19 @@ const Recipe = ({ recipe }: { recipe: RecipeData }) => (
         </section>
         <section className="ingredients">
           <h2>Ingredients</h2>
-          <p>{recipe.ingredients}</p>
+          <ul>
+            {recipe.ingredients.map((ingredient) => (
+              <li key={ingredient}>{ingredient}</li>
+            ))}
+          </ul>
         </section>
         <section className="instructions">
           <h2>Instructions</h2>
-          <p>{recipe.instructions}</p>
+          <ol>
+            {recipe.instructions.map((instruction) => (
+              <li key={instruction.id}>{instruction.step}</li>
+            ))}
+          </ol>
         </section>
       </div>
     </Container>
