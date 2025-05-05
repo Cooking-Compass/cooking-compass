@@ -98,7 +98,14 @@ const ChangePassword = () => {
                   <Form.Group className="form-group py-3">
                     <Row>
                       <Col>
-                        <Button type="submit" className="btn btn-primary">
+                        <Button
+                          style={{
+                            backgroundColor: 'var(--rust)',
+                            borderColor: 'var(--rust)',
+                          }}
+                          type="submit"
+                          className="btn btn-primary"
+                        >
                           Change
                         </Button>
                       </Col>
