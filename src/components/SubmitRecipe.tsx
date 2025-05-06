@@ -89,7 +89,7 @@ const RecipeForm: React.FC = () => {
                   <div className="invalid-feedback">{errors.ingredients?.message}</div>
                 </Form.Group>
                 <Form.Group className="mt-2">
-                  <Form.Label>Description</Form.Label>
+                  <Form.Label>Describe your food!</Form.Label>
                   <textarea
                     {...register('description')}
                     className={`form-control ${errors.description ? 'is-invalid' : ''}`}
@@ -97,7 +97,7 @@ const RecipeForm: React.FC = () => {
                   <div className="invalid-feedback">{errors.description?.message}</div>
                 </Form.Group>
                 <Form.Group className="mt-2">
-                  <Form.Label>Instructions</Form.Label>
+                  <Form.Label>Instructions (Please separate using commas)</Form.Label>
                   <textarea
                     {...register('instructions')}
                     className={`form-control ${errors.instructions ? 'is-invalid' : ''}`}
