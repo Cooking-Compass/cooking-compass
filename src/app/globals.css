@@ -93,6 +93,11 @@ body {
 
 #searchpage {
   margin-bottom: auto;
+  margin-top: 0;
+}
+
+#searchcontainer {
+  margin-bottom: auto;
 }
 
 #middlerow {
@@ -101,6 +106,10 @@ body {
 
 #submitform {
   min-height: 90vh;
+}
+
+#nofound {
+  min-height: 100vh;
 }
 
 #explorepage {
@@ -122,8 +131,9 @@ body {
 }
 
 #recipecard {
-  min-height: 250px;
+  min-height: 400px;
   background-color: white;
+  max-height: 600px;
 }
 
 #recipetitle {
@@ -137,11 +147,16 @@ body {
 #viewrecipe {
   background-color: var(--darker-green);
   color: white;
+  border-width: 6px;
+  border-color: #ffffff;
 }
 
 #recipedescription {
-  min-height: 200px;
-  max-height: 200px;
+  height: 200px;
+}
+
+#recipeimagebox {
+  min-height: 250px;
 }
 
 #subtitle {
@@ -153,7 +168,7 @@ body {
 }
 
 #recipeimage {
-  max-width: 250px;
+  max-height: 250px;
   border-width: 10px;
   border-color: var(--pink);
   border-style: solid;

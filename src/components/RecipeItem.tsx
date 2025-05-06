@@ -6,7 +6,7 @@ const RecipeItem = ({ id, name, description, image }: Recipe) => (
   <div id="recipecard" className="border rounded p-3 shadow-sm">
     <h5 id="recipetitle">{name}</h5>
     <p id="recipedescription">{description}</p>
-    <Row className="justify-content-center mb-3">
+    <Row className="justify-content-center mb-3" id="recipeimagebox">
       <Col xs={6} className="text-center">
         {image ? (
           <Image id="recipeimage" src={image} alt="Recipe Image" />

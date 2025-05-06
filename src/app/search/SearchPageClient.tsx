@@ -37,11 +37,11 @@ const SearchPage = () => {
     <main className="py-4" id="searchpage">
       <Container>
         {loading ? (
-          <p className="text-center mt-4">Loading...</p>
+          <p className="text-center mt-4" id="nofound">Loading...</p>
         ) : results.length === 0 ? (
-          <p className="text-center mt-4 text-muted"><strong>No recipes found.</strong></p>
+          <p className="text-center mt-4 text-muted" id="nofound"><strong>No recipes found.</strong></p>
         ) : (
-          <Row xs={1} md={2} lg={3} className="g-4 mt-3">
+          <Row xs={1} md={2} lg={3} className="g-4 mt-auto">
             {results.map((recipe) => (
               <Col key={recipe.id}>
                 <RecipeItem {...recipe} />
