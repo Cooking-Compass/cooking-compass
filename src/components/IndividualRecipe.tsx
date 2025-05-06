@@ -2,7 +2,7 @@
 
 import '@/app/globals.css';
 import { Jost } from 'next/font/google';
-import { Container, Image } from 'react-bootstrap';
+import { Button, Container, Image } from 'react-bootstrap';
 
 // import font
 const jost = Jost({ subsets: ['latin'] });
@@ -43,6 +43,19 @@ const Recipe = ({ recipe }: { recipe: RecipeData }) => (
             ))}
           </ol>
         </section>
+      </div>
+      <div className="text-end">
+        <Button
+          style={{
+            backgroundColor: 'var(--rust)',
+            borderColor: 'var(--rust)',
+          }}
+          className="mt-3"
+        >
+          <a href="/report" className="text-white text-decoration-none">
+            Report
+          </a>
+        </Button>
       </div>
     </Container>
     <br />
