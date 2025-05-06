@@ -7,6 +7,9 @@ import RecipeItem from '@/components/RecipeItem';
 const RecipeListPage = async () => {
   const recipes = await prisma.recipe.findMany({
     where: {},
+    orderBy: {
+      id: 'desc',
+    },
   });
 
   return (
