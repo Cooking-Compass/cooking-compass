@@ -20,15 +20,25 @@ const RecipeListPage = async () => {
   );
   const owner = (session && session.user && session.user.email) || '';
 
-  const recipes = await prisma.recipe.findMany({
-    where: {
-      owner,
-    },
-    orderBy: {
-      id: 'desc',
-    },
-  });
+  let recipes;
 
+  if (session?.user?.email === 'admin@foo.com') {
+    recipes = await prisma.recipe.findMany({
+      where: {},
+      orderBy: {
+        id: 'desc',
+      },
+    });
+  } else {
+    recipes = await prisma.recipe.findMany({
+      where: {
+        owner,
+      },
+      orderBy: {
+        id: 'desc',
+      },
+    });
+  }
   return (
     <main id="explorepage">
       <Container id="list" fluid className="py-3">
