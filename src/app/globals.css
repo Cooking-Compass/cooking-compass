@@ -133,7 +133,7 @@ body {
 }
 
 #recipecard {
-  height: 600px;
+  height: 650px;
   background-color: white;
 }
 
@@ -158,6 +158,10 @@ body {
 
 #recipedescription {
   height: 200px;
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+  text-align: center;
 }
 
 #recipeimagebox {
@@ -178,4 +182,5 @@ body {
   border-color: var(--pink);
   border-style: solid;
   border-radius: 10px;
+  max-width: 350px;
 }
