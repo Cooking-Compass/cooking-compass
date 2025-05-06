@@ -24,8 +24,8 @@ export const UserReportSchema = Yup.object({
 });
 
 export const RecipeSchema = Yup.object({
-  name: Yup.string().required(),
-  description: Yup.string().required(),
+  name: Yup.string().required().max(35),
+  description: Yup.string().required().max(300),
   ingredients: Yup.string().required(),
   instructions: Yup.string().required(),
   owner: Yup.string().required(),
