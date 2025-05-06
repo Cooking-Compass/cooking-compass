@@ -67,6 +67,7 @@ const RecipeForm: React.FC = () => {
                   <input
                     type="text"
                     {...register('name')}
+                    maxLength={35}
                     className={`form-control ${errors.name ? 'is-invalid' : ''}`}
                   />
                   <div className="invalid-feedback">{errors.name?.message}</div>
@@ -92,6 +93,7 @@ const RecipeForm: React.FC = () => {
                   <Form.Label>Describe your food!</Form.Label>
                   <textarea
                     {...register('description')}
+                    maxLength={300}
                     className={`form-control ${errors.description ? 'is-invalid' : ''}`}
                   />
                   <div className="invalid-feedback">{errors.description?.message}</div>
