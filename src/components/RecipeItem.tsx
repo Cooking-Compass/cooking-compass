@@ -8,7 +8,11 @@ const RecipeItem = ({ id, name, description, image }: Recipe) => (
     <p id="recipedescription">{description}</p>
     <Row className="justify-content-center mb-3">
       <Col xs={6} className="text-center">
-        <Image id="recipeimage" src={image} alt="Recipe Image" />
+        {image ? (
+          <Image id="recipeimage" src={image} alt="Recipe Image" />
+        ) : (
+          <p>No image available</p>
+        )}
       </Col>
       <Col xs={6} className="d-flex align-items-end justify-content-center">
         <Container className="text-end">
