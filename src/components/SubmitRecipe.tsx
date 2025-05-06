@@ -79,7 +79,7 @@ const RecipeForm: React.FC = () => {
                   <div className="invalid-feedback">{errors.image?.message}</div>
                 </Form.Group>
                 <Form.Group className="mt-2">
-                  <Form.Label>Ingredients</Form.Label>
+                  <Form.Label>Ingredients (Please separate using commas)</Form.Label>
                   <textarea
                     {...register('ingredients')}
                     className={`form-control ${errors.ingredients ? 'is-invalid' : ''}`}
