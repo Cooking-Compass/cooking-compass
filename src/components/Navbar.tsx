@@ -16,8 +16,6 @@ const jost = Jost({ subsets: ['latin'] });
 const NavBar: React.FC = () => {
   const { data: session } = useSession();
   const currentUser = session?.user?.email;
-  const userWithRole = session?.user as { email: string; randomKey: string };
-  const role = userWithRole?.randomKey;
   const pathName = usePathname();
   const isExplorePage = pathName === '/explore';
   const isSearchPage = pathName === '/search';
@@ -42,6 +40,7 @@ const NavBar: React.FC = () => {
   };
 
   return (
+    console.log(currentUser),
     <Navbar className={`${jost.className} py-3`} id="menucolor" expand="lg">
       <Container>
         <Navbar.Brand href="/">
@@ -87,15 +86,6 @@ const NavBar: React.FC = () => {
               onKeyDown={handleKeyDown} // Trigger search on Enter key
             />
           )}
-          <Nav className="navbar-text me-auto justify-content-start">
-            {currentUser && role === 'ADMIN' ? (
-              <Nav.Link id="admin-stuff-nav" href="/admin" key="admin" active={pathName === '/admin'}>
-                Admin
-              </Nav.Link>
-            ) : (
-              ''
-            )}
-          </Nav>
           <Nav className="ms-auto">
           {((!isSearchPage) && (!isExplorePage) && (!isMyRecipe) && (!isSubmit)) && (
             <Navbar.Brand href="/myrecipes" className="navbar-text py-3 px-5">
