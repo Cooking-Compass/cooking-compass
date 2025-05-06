@@ -29,6 +29,8 @@ const onSubmit = async (data: {
   await addRecipe(data);
   swal('Success', 'Your item has been added', 'success', {
     timer: 2000,
+  }).then(() => {
+    window.location.href = '/explore';
   });
 };
 
