@@ -110,6 +110,8 @@ body {
 
 #nofound {
   min-height: 100vh;
+  font-size: 30px;
+  color: var(--dark-green);
 }
 
 #explorepage {
