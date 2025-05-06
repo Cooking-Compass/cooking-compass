@@ -69,7 +69,6 @@ export async function addRecipe(data: {
       image: data.image,
     },
   });
-  redirect('/explore');
 }
 
 /**
