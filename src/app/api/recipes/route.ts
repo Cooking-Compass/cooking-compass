@@ -14,10 +14,26 @@ export async function GET(req: NextRequest) {
   try {
     const recipes = await prisma.recipe.findMany({
       where: {
-        name: {
-          contains: search,
-          mode: 'insensitive',
-        },
+        OR: [
+          {
+            name: {
+              contains: search,
+              mode: 'insensitive',
+            },
+          },
+          {
+            description: {
+              contains: search,
+              mode: 'insensitive',
+            },
+          },
+          {
+            ingredients: {
+              contains: search,
+              mode: 'insensitive',
+            },
+          },
+        ],
       },
     });
 
