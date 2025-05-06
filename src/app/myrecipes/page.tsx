@@ -1,13 +1,29 @@
+/* eslint-disable import/extensions */
 /* eslint-disable max-len */
 import { Col, Container, Row } from 'react-bootstrap';
+import { getServerSession } from 'next-auth';
 import { prisma } from '@/lib/prisma';
-import RecipeItem from '@/components/RecipeItem';
+import authOptions from '@/lib/authOptions';
+import { loggedInProtectedPage } from '@/lib/page-protection';
+import RecipeItemMine from '@/components/RecipeItemMine';
 
 export const dynamic = 'force-dynamic';
 
 const RecipeListPage = async () => {
+  // Protect the page, only logged in users can access it.
+  const session = await getServerSession(authOptions);
+  loggedInProtectedPage(
+    session as {
+      user: { email: string; id: string; randomKey: string };
+      // eslint-disable-next-line @typescript-eslint/comma-dangle
+    } | null,
+  );
+  const owner = (session && session.user && session.user.email) || '';
+
   const recipes = await prisma.recipe.findMany({
-    where: {},
+    where: {
+      owner,
+    },
     orderBy: {
       id: 'desc',
     },
@@ -21,7 +37,7 @@ const RecipeListPage = async () => {
           <Row xs={1} md={2} lg={3} className="g-4">
             {recipes.map((recipe) => (
               <Col key={recipe.id}>
-                <RecipeItem {...recipe} />
+                <RecipeItemMine {...recipe} />
               </Col>
             ))}
           </Row>
