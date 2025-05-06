@@ -133,17 +133,20 @@ body {
 }
 
 #recipecard {
-  min-height: 400px;
+  height: 600px;
   background-color: white;
-  max-height: 600px;
 }
 
 #recipetitle {
   font-size: 30px;
-  background-color: var(--pink);
   border-radius: 10px;
   text-align: center;
   color:rgb(7, 5, 5);
+  height: 72px;
+  background-color: var(--pink);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 #viewrecipe {
