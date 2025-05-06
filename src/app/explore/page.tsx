@@ -13,17 +13,13 @@ const RecipeListPage = async () => {
     <main id="explorepage">
       <Container id="list" fluid className="py-3">
         <Container>
-          <Row>
-            <Col>
-              <h1 className="text-center">Recipes</h1>
-              <Row xs={1} md={2} lg={3} className="g-4">
-                {recipes.map((recipe) => (
-                  <Col key={recipe.id}>
-                    <RecipeItem {...recipe} />
-                  </Col>
-                ))}
-              </Row>
-            </Col>
+          <h1 className="text-center">Recipes</h1>
+          <Row xs={1} md={2} lg={3} className="g-4">
+            {recipes.map((recipe) => (
+              <Col key={recipe.id}>
+                <RecipeItem {...recipe} />
+              </Col>
+            ))}
           </Row>
         </Container>
       </Container>
