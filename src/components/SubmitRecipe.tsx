@@ -92,7 +92,7 @@ const RecipeForm: React.FC = () => {
                   <div className="invalid-feedback">{errors.description?.message}</div>
                 </Form.Group>
                 <Form.Group className="mt-2">
-                  <Form.Label>Ingredients (Please separate using commas)</Form.Label>
+                  <Form.Label>Ingredients (Please separate using newlines)</Form.Label>
                   <textarea
                     rows={5}
                     {...register('ingredients')}
@@ -101,7 +101,7 @@ const RecipeForm: React.FC = () => {
                   <div className="invalid-feedback">{errors.ingredients?.message}</div>
                 </Form.Group>
                 <Form.Group className="mt-2">
-                  <Form.Label>Instructions (Please separate using commas)</Form.Label>
+                  <Form.Label>Instructions (Please separate using newlines)</Form.Label>
                   <textarea
                     rows={8}
                     {...register('instructions')}
