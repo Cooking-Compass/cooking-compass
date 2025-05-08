@@ -16,11 +16,11 @@ const jost = Jost({ subsets: ['latin'] });
 const NavBar: React.FC = () => {
   const { data: session } = useSession();
   const currentUser = session?.user?.email;
-  const userWithRole = session?.user as { email: string; randomKey: string };
-  const role = userWithRole?.randomKey;
   const pathName = usePathname();
   const isExplorePage = pathName === '/explore';
   const isSearchPage = pathName === '/search';
+  const isMyRecipe = pathName === '/myrecipes';
+  const isSubmit = pathName === '/addrecipe';
   const router = useRouter();
 
   const [searchQuery, setSearchQuery] = useState('');
@@ -40,6 +40,7 @@ const NavBar: React.FC = () => {
   };
 
   return (
+    console.log(currentUser),
     <Navbar className={`${jost.className} py-3`} id="menucolor" expand="lg">
       <Container>
         <Navbar.Brand href="/">
@@ -75,24 +76,35 @@ const NavBar: React.FC = () => {
               onKeyDown={handleKeyDown} // Trigger search on Enter key
             />
           )}
-          <Nav className="navbar-text me-auto justify-content-start">
-            {currentUser && role === 'ADMIN' ? (
-              <Nav.Link id="admin-stuff-nav" href="/admin" key="admin" active={pathName === '/admin'}>
-                Admin
-              </Nav.Link>
-            ) : (
-              ''
-            )}
-          </Nav>
+          {isMyRecipe && (
+            <Form.Control
+              type="text"
+              placeholder="Search for Recipes"
+              className="me-2"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)} // Update the query on input change
+              onKeyDown={handleKeyDown} // Trigger search on Enter key
+            />
+          )}
           <Nav className="ms-auto">
-          {(!isSearchPage) && (
-            <Navbar.Brand href="/about" className="navbar-text py-3 px-5">
-              About
+          {((!isSearchPage) && (!isExplorePage) && (!isMyRecipe) && (!isSubmit)) && (
+            <Navbar.Brand href="/myrecipes" className="navbar-text py-3 px-5">
+              My Recipes
             </Navbar.Brand>
           )}
           {(isSearchPage) && (
             <Navbar.Brand href="/explore" className="navbar-text py-3 px-5">
               Back To Explore
+            </Navbar.Brand>
+          )}
+          {((isExplorePage)) && (
+            <Navbar.Brand href="/myrecipes" className="navbar-text py-3 px-5">
+            My Recipes
+            </Navbar.Brand>
+          )}
+          {((isSubmit)) && (
+            <Navbar.Brand href="/myrecipes" className="navbar-text py-3 px-5">
+            My Recipes
             </Navbar.Brand>
           )}
             {session ? (

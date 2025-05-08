@@ -5,7 +5,6 @@ import RecipeItem from '@/components/RecipeItem';
 
 export const dynamic = 'force-dynamic';
 
-/** Render a list of recipes for the logged-in user. */
 const RecipeListPage = async () => {
   const recipes = await prisma.recipe.findMany({
     where: {},

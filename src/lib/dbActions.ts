@@ -1,6 +1,6 @@
 'use server';
 
-import { Stuff, Condition, Reason } from '@prisma/client';
+import { Stuff, Condition, Reason, Recipe } from '@prisma/client';
 import { hash } from 'bcrypt';
 import { redirect } from 'next/navigation';
 import { prisma } from './prisma';
@@ -71,6 +71,22 @@ export async function addRecipe(data: {
   });
 }
 
+export async function editRecipe(data: Recipe) {
+  await prisma.recipe.update({
+    where: { id: data.id },
+    data: {
+      name: data.name,
+      description: data.description,
+      ingredients: data.ingredients,
+      instructions: data.instructions,
+      owner: data.owner,
+      image: data.image,
+    },
+  });
+  // After updating, redirect to the myrecipe page
+  redirect('/myrecipes');
+}
+
 /**
  * Edits an existing stuff in the database.
  * @param stuff, an object with the following properties: id, name, quantity, owner, condition.
@@ -101,6 +117,15 @@ export async function deleteStuff(id: number) {
   });
   // After deleting, redirect to the list page
   redirect('/list');
+}
+
+export async function deleteRecipe(id: number) {
+  // console.log(`deleteStuff id: ${id}`);
+  await prisma.recipe.delete({
+    where: { id },
+  });
+  // After deleting, redirect to the list page
+  redirect('/myrecipes');
 }
 
 /**
