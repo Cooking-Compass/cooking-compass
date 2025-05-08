@@ -21,9 +21,8 @@ const getRecipe = async (id: string) => {
     title: recipe.name,
     image: recipe.image,
     description: recipe.description,
-    // !!! STILL DECIDING ON HOW TO SPLIT:
-    ingredients: recipe.ingredients.split(','), // splits by commas
-    instructions: recipe.instructions.split(',').map((step, index) => ({
+    ingredients: recipe.ingredients.split('\n'), // splits by newlines
+    instructions: recipe.instructions.split('\n').map((step, index) => ({
       id: `${index + 1}`,
       step: step.trim(),
     })),
