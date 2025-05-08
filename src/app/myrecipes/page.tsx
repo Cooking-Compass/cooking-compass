@@ -1,12 +1,15 @@
 /* eslint-disable import/extensions */
 /* eslint-disable max-len */
-import { Col, Container, Row } from 'react-bootstrap';
-import { getServerSession } from 'next-auth';
-import { prisma } from '@/lib/prisma';
+import RecipeItemMine from '@/components/RecipeItemMine';
 import authOptions from '@/lib/authOptions';
 import { loggedInProtectedPage } from '@/lib/page-protection';
-import RecipeItemMine from '@/components/RecipeItemMine';
+import { prisma } from '@/lib/prisma';
+import { getServerSession } from 'next-auth';
+import { Jost } from 'next/font/google';
+import { Col, Container, Row } from 'react-bootstrap';
 
+// import font
+const jost = Jost({ subsets: ['latin'] });
 export const dynamic = 'force-dynamic';
 
 const RecipeListPage = async () => {
@@ -40,7 +43,7 @@ const RecipeListPage = async () => {
     });
   }
   return (
-    <main id="explorepage">
+    <main className={jost.className} id="explorepage">
       <Container id="list" fluid className="py-3">
         <Container>
           <h1 className="text-center">Recipes</h1>
