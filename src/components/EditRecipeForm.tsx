@@ -2,14 +2,14 @@
 
 'use client';
 
+import { deleteRecipe, editRecipe } from '@/lib/dbActions';
+import { EditRecipeSchema } from '@/lib/validationSchemas';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { Recipe } from '@prisma/client';
+import { Jost } from 'next/font/google';
 import { Button, Card, Col, Container, Form, Row } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
 import swal from 'sweetalert';
-import { yupResolver } from '@hookform/resolvers/yup';
-import { Recipe } from '@prisma/client';
-import { EditRecipeSchema } from '@/lib/validationSchemas';
-import { deleteRecipe, editRecipe } from '@/lib/dbActions';
-import { Jost } from 'next/font/google';
 
 const jost = Jost({ subsets: ['latin'] });
 
@@ -76,7 +76,7 @@ const EditRecipeForm = ({ recipe }: { recipe: Recipe }) => {
                   <div className="invalid-feedback">{errors.description?.message}</div>
                 </Form.Group>
                 <Form.Group className="mt-2">
-                  <Form.Label>Ingredients (Please separate using commas)</Form.Label>
+                  <Form.Label>Ingredients (Please separate using newlines)</Form.Label>
                   <textarea
                     rows={5}
                     {...register('ingredients')}
@@ -86,7 +86,7 @@ const EditRecipeForm = ({ recipe }: { recipe: Recipe }) => {
                   <div className="invalid-feedback">{errors.ingredients?.message}</div>
                 </Form.Group>
                 <Form.Group className="mt-2">
-                  <Form.Label>Instructions (Please separate using commas)</Form.Label>
+                  <Form.Label>Instructions (Please separate using newlines)</Form.Label>
                   <textarea
                     rows={8}
                     {...register('instructions')}
@@ -99,7 +99,14 @@ const EditRecipeForm = ({ recipe }: { recipe: Recipe }) => {
                 <Form.Group className="form-group">
                   <Row className="pt-3">
                     <Col className="text-start">
-                      <Button type="submit" variant="primary">
+                      <Button
+                        style={{
+                          backgroundColor: 'var(--rust)',
+                          borderColor: 'var(--rust)',
+                        }}
+                        type="submit"
+                        variant="primary"
+                      >
                         Submit
                       </Button>
                     </Col>
