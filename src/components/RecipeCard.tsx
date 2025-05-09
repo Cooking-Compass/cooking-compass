@@ -1,8 +1,7 @@
 'use client';
 
-import React from 'react';
-import { Card, Button } from 'react-bootstrap';
 import Link from 'next/link';
+import { Button, Card } from 'react-bootstrap';
 
 interface Recipe {
   id: number;

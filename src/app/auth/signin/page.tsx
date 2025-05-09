@@ -51,7 +51,14 @@ const SignIn = () => {
                       <input name="password" type="password" className="form-control" />
                     </Form.Group>
                     <br />
-                    <Button type="submit" className="mt-3">
+                    <Button
+                      style={{
+                        backgroundColor: 'var(--rust)',
+                        borderColor: 'var(--rust)',
+                      }}
+                      type="submit"
+                      className="mt-3"
+                    >
                       Sign in
                     </Button>
                   </Form>

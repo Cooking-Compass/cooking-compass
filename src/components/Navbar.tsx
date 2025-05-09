@@ -4,20 +4,43 @@
 
 import { useSession } from 'next-auth/react';
 import { Jost } from 'next/font/google';
-import { usePathname } from 'next/navigation';
-import { Container, Image, Nav, Navbar, NavDropdown } from 'react-bootstrap';
+import { usePathname, useRouter } from 'next/navigation';
+import { useState } from 'react';
+import { Container, Form, Image, Nav, Navbar, NavDropdown } from 'react-bootstrap';
 import { BoxArrowRight, Lock, PersonFill, PersonPlusFill } from 'react-bootstrap-icons';
 
 // import font
 const jost = Jost({ subsets: ['latin'] });
 
+// eslint-disable-next-line react/prop-types
 const NavBar: React.FC = () => {
   const { data: session } = useSession();
   const currentUser = session?.user?.email;
-  const userWithRole = session?.user as { email: string; randomKey: string };
-  const role = userWithRole?.randomKey;
   const pathName = usePathname();
+  const isExplorePage = pathName === '/explore';
+  const isSearchPage = pathName === '/search';
+  const isMyRecipe = pathName === '/myrecipes';
+  const isSubmit = pathName === '/addrecipe';
+  const router = useRouter();
+
+  const [searchQuery, setSearchQuery] = useState('');
+
+  const handleSearch = () => {
+    if (searchQuery.trim() !== '') {
+      const encoded = encodeURIComponent(searchQuery.trim());
+      router.push(`/search?q=${encoded}`);
+    }
+  };
+
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter') {
+      e.preventDefault(); // Prevent the default form submission behavior
+      handleSearch();
+    }
+  };
+
   return (
+    console.log(currentUser),
     <Navbar className={`${jost.className} py-3`} id="menucolor" expand="lg">
       <Container>
         <Navbar.Brand href="/">
@@ -25,25 +48,65 @@ const NavBar: React.FC = () => {
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
-          <Navbar.Brand href="/explore" className="navbar-text py-3 px-5">
-            Explore
-          </Navbar.Brand>
+          {(!isExplorePage && !isSearchPage) && (
+            <Navbar.Brand href="/explore" className="navbar-text py-3 px-5">
+              Explore
+            </Navbar.Brand>
+          )}
           <Navbar.Brand href="/addrecipe" className="navbar-text py-3">
             Submit a Recipe!
           </Navbar.Brand>
-          <Nav className="navbar-text me-auto justify-content-start">
-            {currentUser && role === 'ADMIN' ? (
-              <Nav.Link id="admin-stuff-nav" href="/admin" key="admin" active={pathName === '/admin'}>
-                Admin
-              </Nav.Link>
-            ) : (
-              ''
-            )}
-          </Nav>
+          {isExplorePage && (
+            <Form.Control
+              type="text"
+              placeholder="Search for Recipes"
+              className="me-auto"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)} // Update the query on input change
+              onKeyDown={handleKeyDown} // Trigger search on Enter key
+            />
+          )}
+          {isSearchPage && (
+            <Form.Control
+              type="text"
+              placeholder="Search for Recipes"
+              className="me-auto"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)} // Update the query on input change
+              onKeyDown={handleKeyDown} // Trigger search on Enter key
+            />
+          )}
+          {isMyRecipe && (
+            <Form.Control
+              type="text"
+              placeholder="Search for Recipes"
+              className="me-2"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)} // Update the query on input change
+              onKeyDown={handleKeyDown} // Trigger search on Enter key
+            />
+          )}
           <Nav className="ms-auto">
-            <Navbar.Brand href="/about" className="navbar-text py-3 px-5">
-              About
+          {((!isSearchPage) && (!isExplorePage) && (!isMyRecipe) && (!isSubmit)) && (
+            <Navbar.Brand href="/myrecipes" className="navbar-text py-3 px-5">
+              My Recipes
             </Navbar.Brand>
+          )}
+          {(isSearchPage) && (
+            <Navbar.Brand href="/explore" className="navbar-text py-3 px-5">
+              Back To Explore
+            </Navbar.Brand>
+          )}
+          {((isExplorePage)) && (
+            <Navbar.Brand href="/myrecipes" className="navbar-text py-3 px-5">
+            My Recipes
+            </Navbar.Brand>
+          )}
+          {((isSubmit)) && (
+            <Navbar.Brand href="/myrecipes" className="navbar-text py-3 px-5">
+            My Recipes
+            </Navbar.Brand>
+          )}
             {session ? (
               <NavDropdown className="navbar-text d-flex" id="login-dropdown" title={currentUser}>
                 <NavDropdown.Item id="login-dropdown-sign-out" href="/api/auth/signout">

@@ -39,13 +39,14 @@
 }
 
 .recipe-image {
-  float: left;
+  float: right;
   width: 400px;
   height: 300px;
   object-fit: cover;
   border-radius: 3px;
-  margin-right: 30px;
-  margin-bottom: 20px;
+  margin-left: 30px;
+  margin-bottom: 30px;
+  max-height: 300px;
 }
 
 .recipe-text {
@@ -70,6 +71,12 @@ body {
   flex-direction: column;
 }
 
+#submitrecipe {
+  background: fixed center url('../../public/leaves2.jpg');
+  background-size: cover;
+  flex: 1;
+}
+
 #middleimg {
   max-height: 750px;
 }
@@ -85,12 +92,31 @@ body {
   display: flex;
 }
 
+#searchpage {
+  margin-bottom: auto;
+  margin-top: 0;
+}
+
+#searchcontainer {
+  margin-bottom: auto;
+}
+
 #middlerow {
   height: 60vh
 }
 
-#submitform, #explorepage {
+#submitform {
   min-height: 90vh;
+}
+
+#nofound {
+  min-height: 100vh;
+  font-size: 30px;
+  color: var(--dark-green);
+}
+
+#explorepage {
+  margin-bottom: auto;
 }
 
 #aboutpage, #reportpage {
@@ -108,25 +134,39 @@ body {
 }
 
 #recipecard {
-  min-height: 250px;
+  height: 650px;
   background-color: white;
 }
 
 #recipetitle {
   font-size: 30px;
-  background-color: var(--pink);
   border-radius: 10px;
   text-align: center;
   color:rgb(7, 5, 5);
+  height: 72px;
+  background-color: var(--pink);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 #viewrecipe {
   background-color: var(--darker-green);
   color: white;
+  border-width: 6px;
+  border-color: #ffffff;
 }
 
 #recipedescription {
-  min-height: 200px;
+  height: 200px;
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+  text-align: center;
+}
+
+#recipeimagebox {
+  min-height: 250px;
 }
 
 #subtitle {
@@ -135,4 +175,13 @@ body {
 
 #smalltext {
   font-size: 20px;
+}
+
+#recipeimage {
+  max-height: 250px;
+  border-width: 10px;
+  border-color: var(--pink);
+  border-style: solid;
+  border-radius: 10px;
+  max-width: 350px;
 }

@@ -1,10 +1,14 @@
-import { getServerSession } from 'next-auth';
-import { notFound } from 'next/navigation';
-import { Stuff } from '@prisma/client';
+import EditRecipeForm from '@/components/EditRecipeForm';
 import authOptions from '@/lib/authOptions';
 import { loggedInProtectedPage } from '@/lib/page-protection';
 import { prisma } from '@/lib/prisma';
-import EditStuffForm from '@/components/EditStuffForm';
+import { Recipe } from '@prisma/client';
+import { getServerSession } from 'next-auth';
+import { Jost } from 'next/font/google';
+import { notFound } from 'next/navigation';
+
+// import font
+const jost = Jost({ subsets: ['latin'] });
 
 export default async function EditStuffPage({ params }: { params: { id: string | string[] } }) {
   // Protect the page, only logged in users can access it.
@@ -17,17 +21,17 @@ export default async function EditStuffPage({ params }: { params: { id: string |
   );
   const id = Number(Array.isArray(params?.id) ? params?.id[0] : params?.id);
   // console.log(id);
-  const stuff: Stuff | null = await prisma.stuff.findUnique({
+  const recipe: Recipe | null = await prisma.recipe.findUnique({
     where: { id },
   });
   // console.log(stuff);
-  if (!stuff) {
+  if (!recipe) {
     return notFound();
   }
 
   return (
-    <main>
-      <EditStuffForm stuff={stuff} />
+    <main className={jost.className}>
+      <EditRecipeForm recipe={recipe} />
     </main>
   );
 }
