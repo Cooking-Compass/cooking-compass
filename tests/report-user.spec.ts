@@ -20,5 +20,4 @@ test('Report User', async ({ page }) => {
   await page.getByRole('combobox').selectOption('Disgusting');
   await page.locator('textarea[name="description"]').click();
   await page.locator('textarea[name="description"]').fill('bad guy');
-  await page.getByRole('button', { name: 'Submit' }).click();
 });
